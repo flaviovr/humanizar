@@ -1,0 +1,25 @@
+{
+  "bg": "/images/page/background.png",
+  "title": "12º Humanizar Sul Fluminense",
+  "slogan": "Humanizar é resgatar em nós o abraço, a amizade, o perdão.",
+  "desc": "O Humanizar é um Encontro de Espiritismo e Humanização com o objetivo de sensibilizar e criar um espaço de debate, acerca da proposta “Atitude de Amor”, ideia difundida por Bezerra de Menezes.",    
+  "theme": {
+    "bg": "/images/page/background.png",
+    "colors": {
+      "logo":"#fff",
+      "primary": "#ff99cc",
+      "primaryDark": "#ad3e75",
+      "secondary": "#003366",
+      "secondaryLight": "#6185c2",
+      "gray":"#595959",
+      "lightGray":"#ccdfcc",
+      "mainBg": "#ABABB5",
+      "contrastText": "#DCD023",
+      "mainText": "#4e4b47",
+      "wrong": "#FF5722",
+      "success": "#4CAF50"
+    },
+    "borderRadius": "6px",
+    "fontSize": "14px"
+  }
+}
