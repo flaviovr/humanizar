@@ -19,12 +19,30 @@ const LogoContainer = styled.h1`
             color:${({ theme }) => theme.colors.logo};
             font-size: 21px; 
         }
+        &:hover{color:${({ theme }) => theme.colors.logo};}
+    }
+    &.small {
+        display: block;
+        margin: 0px;
+        float: left;
+        padding:0px;
+        a {
+            display: block;
+            margin: 0px;
+            width: 315px;
+            height: 70px;
+            font-size: 0px;
+            background: url(images/page/logo-pequena.png) center center no-repeat;
+            b { font-size: 0px; }
+        }
     }
 
 `;
 
 const Logo = (props)=>{
-    return <LogoContainer><Link href="/"><a><b>12º Humanizar</b> Sul Fluminense</a></Link></LogoContainer>;
+    
+    const isHome = props.isHome;
+    return <LogoContainer className={!isHome? 'small': null} ><Link href="/"><a><b>12º Humanizar</b> Sul Fluminense</a></Link></LogoContainer>;
 };
 
 export default Logo;

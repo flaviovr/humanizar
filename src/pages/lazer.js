@@ -12,10 +12,9 @@ const Page = (props) => {
    
     return (
         <Main>
-            <h2>Local</h2>
-            <h3>Centro Marista São José das Paineiras – Espaço Champagnat</h3>
+            <h2>Opções de Lazer</h2>
             <div className="texto">
-                <p> Situado na região do Vale do Café, município de Mendes, interior do estado do Rio de Janeiro, em meio à Mata Atlântica secundária com 250 hectares de extensão e uma altitude média de 431m acima do nível do mar, o Centro Marista está localizado, aproximadamente, a 100km da cidade do Rio de Janeiro, 380km de Belo Horizonte e 390km de São Paulo. </p>
+                <p>Os caminhos e trilhas ecológicas existentes na extensa área da fazenda são um convite para as atividades de lazer na Natureza (para quem acorda  muito cedo, antes do início das atividades).</p>
             </div>
             <Sidebar item={item}/>
         </Main>
@@ -32,3 +31,7 @@ const Main = styled.div`
     width: 640px; 
 `
 export default Page;
+
+
+
+

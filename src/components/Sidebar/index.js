@@ -29,7 +29,7 @@ const SidebarContainer = styled.div`
     top: 0px;
     left: 640px;
     width: 320px;
-    margin-top:18px;
+    margin-top:17px;
     img { margin-bottom: 31px;}
 `;
 const Frase = styled.p`

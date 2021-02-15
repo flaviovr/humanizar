@@ -3,10 +3,10 @@ import Link from "next/link";
 
 
 const Menu = (props)=>{
-    const {route} = props;
-    
+    const isHome =props.isHome;
+
     return (
-        <MenuContainer>
+        <MenuContainer className={!isHome? 'small': null}>
 
             <li className="item">
                 <Link href="/#" ><a>Humanizar</a></Link>
@@ -54,31 +54,32 @@ const MenuContainer = styled.ul`
     height: 45px;
     padding: 10px;
     float: right;
-   
+    
     .item { 
         list-style-type:none;  
         display: inline-table;  
         margin: 0px; 
         margin-right: 23px; 
-        position: relative; 
-        
+        position: relative;     
         padding:0px;
-        
         a { 
             display:block; color: #ffffff; opacity:.64; font-size: 16px; line-height: 28px; font-weight: bold;
-            -webkit-transition: all .3s ;-moz-transition: all .3s ;-ms-transition: all .3s ;-o-transition: all .3s ; transition: all .3s ;
+             transition: all .3s ;
             :hover {
                 opacity:1;
             }
             .ativo {opacity:1;}
         }
         :hover .submenu {
-            display:block;
-            height:auto;
-            -webkit-transition: all .3s ;-moz-transition: all .3s ;-ms-transition: all .3s ;-o-transition: all .3s ; transition: all .3s ;
+            display:inline-table;
+            transform: scaleY(1);
+            
+            transition: all .3s ;
         }
         .submenu { 
-            display:none; 
+            display:inline-table;
+            transform: scaleY(0); 
+            transform-origin: top;
             position:absolute; 
             list-style-type:none;  
             list-style:inside;
@@ -89,7 +90,7 @@ const MenuContainer = styled.ul`
             margin-right:-112px; 
             padding: 20px 0 0 0; 
             z-index: 999;
-            -webkit-transition: all .3s ;-moz-transition: all .3s ;-ms-transition: all .3s ;-o-transition: all .3s ; transition: all .3s ; 
+   
             span { 
                 display: block; position: absolute; left:0px; bottom:-15px; width: 224px; height: 15px; background: url('images/page/background-submenu.png') bottom center; 
             }
@@ -105,6 +106,10 @@ const MenuContainer = styled.ul`
         }
     }
     .item.last-child{ margin: 0px; }
+    &.small {
+        .item  a {color:#1a223a; opacity:1;}
+        .item  a:hover{color:${({ theme }) => theme.colors.secondary}}
+    }
 `;
 
 

@@ -4,7 +4,7 @@ import Menu from "../Menu";
 
 const TopBar = (props) => {
     const {route} = props;
-    const isHome = route=='/' ? true : false;
+    const isHome = props.isHome;
 
     return (
        <TopoContainer className={!isHome? 'small': null} >
@@ -27,7 +27,7 @@ const TopoContainer = styled.div`
     padding: 0 120px;
     background: #ABABB5 url(images/page/background-topo.jpg) top center no-repeat;
     &.small {
-        height: 70px; 
+        height: 71px; 
         border-bottom: 1px solid #f2e3f1;
         background: #fff ;
     }

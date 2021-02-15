@@ -1,26 +1,28 @@
 import styled from 'styled-components';
 import Palestrantes from '../components/Palestrantes';
 import MuralHome from '../components/Mural';
-import {db as muralData} from '../../mural.json';
+
 
 
 const Home = (props) => {
 
-  return (
-    <Main>
-      <Palestrantes/>
-      <hr/>
-      <Frase>
-        "Humanizar é resgatar em nós o abraço, a amizade, o perdão."<b>Bezerra de Menezes</b>
-      </Frase>
-      <hr/>
-      <Frase>
-        Mural
-        <a href="mural.php">ver todos recados</a>
-      </Frase>
-      <MuralHome data={muralData}/>
-    </Main>
-  );
+    const db = props.data;
+    
+    return (
+        <Main>
+            <Palestrantes/>
+            <hr/>
+            <Frase>
+                "Humanizar é resgatar em nós o abraço, a amizade, o perdão."<b>Bezerra de Menezes</b>
+            </Frase>
+            <hr/>
+            <Frase>
+                Mural
+                <a href="mural.php">ver todos recados</a>
+            </Frase>
+            <MuralHome data={db.mural}/>
+        </Main>
+    );
 }
 
 

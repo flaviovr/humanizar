@@ -5,7 +5,9 @@ import Background from '../components/Background';
 import TopBar from '../components/TopBar';
 import Rodape from '../components/Rodape';
 import config from '../../config.json';
+import db from '../../db.json';
 import {useRouter} from 'next/router';
+
 
 
 const GlobalStyle = createGlobalStyle`
@@ -46,15 +48,32 @@ const GlobalStyle = createGlobalStyle`
 
     p {
        margin:0;padding:0;
+      
     }
     a img {border:none;}
-    a, a:hover {text-decoration:none;}
-    a:hover { color: ${({ theme }) => theme.colors.secondary} ;}
+    a, a:hover {text-decoration:none;color: ${({ theme }) => theme.colors.primary}}
+    a:hover { color: ${({ theme }) => theme.colors.primaryDark} ;}
     hr { background: url(images/page/hr.png) 0px -1px no-repeat; border: none; margin: 10px; height: 5px; display: block; clear: both; }
-    h2 { font-size: 28px; color: ${({ theme }) => theme.colors.secondary} ; margin-bottom: 20px;/* height: 40px; */ line-height: 40px; padding: 0 10px;}
+    h2 { font-size: 28px; color: ${({ theme }) => theme.colors.secondary} ; margin-bottom: 30px;/* height: 40px; */ line-height: 40px; padding: 0 10px;}
     h3 { font-size: 21px; color: ${({ theme }) => theme.colors.secondaryLight}; margin-bottom: 20px;padding: 0 10px;}
     h4 { font-size: 18px; color: ${({ theme }) => theme.colors.primary}; margin-bottom: 15px; padding: 0 10px;}
     h5 { font-size: 16px; margin-bottom: 3px;}
+    .btn {
+        display: block;
+        height: 32px;
+        background-color: #003366;
+        font-size: 18px;
+        line-height: 30px;
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        font-family: "Amaranth";
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -o-border-radius: 4px;
+        border-radius: 4px;
+    }
     .rnd {border-radius:${({ theme }) => theme.borderRadius}}
     .texto {
       padding: 0 10px;
@@ -79,6 +98,8 @@ export default function App({ Component, pageProps }) {
   
   const router = useRouter();
   const {route} = router;
+  const isHome = route == '/' ? true : false;
+
   return (
     <>
 
@@ -94,8 +115,8 @@ export default function App({ Component, pageProps }) {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Background>
-          <TopBar route={route} />
-          <Component {...pageProps} />
+          <TopBar isHome={isHome} />
+          <Component {...pageProps} data={db} isHome={isHome} />
           <Rodape/>
         </Background>
         

@@ -41,7 +41,7 @@ const RodapeContainer = styled.div`
     background: url(images/page/hr.png) top center no-repeat;
     margin-top: 20px;
     padding-top: 20px;
-    height: 150px;
+    height: 170px;
     
     .campo { 
         width: 177px; height: 24px; padding: 0 5px; line-height: 20px; border: 1px solid #C5C1BA;  margin-top: 9px;-webkit-border-radius: 4px;-moz-border-radius: 4px;-o-border-radius: 4px;border-radius: 4px; margin-right:3px;
@@ -52,7 +52,7 @@ const RodapeContainer = styled.div`
     }
 `;
 const Frase = styled.p`
-    font-size: 15px; width: 460px;  display: block; padding: 10px; float: left;
+    font-size: 15px; width: 460px;  display: block; padding: 10px; float: left;font-family: "Amaranth";
     b {
         font-size: 14px; display: block;
     }
@@ -68,6 +68,6 @@ const Bloco = styled.div`
 `;
 
 const Copyright = styled.p`
-    width: 460px;  display: block; padding: 0 10px; font-size: 12px;
+    width: 460px;  display: block; padding: 0 10px; font-size: 12px;font-family: "Amaranth";
 `;
 export default Rodape

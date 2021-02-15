@@ -16,7 +16,7 @@
       "mainBg": "#ABABB5",
       "contrastText": "#DCD023",
       "mainText": "#4e4b47",
-      "wrong": "#FF5722",
+      "error": "hsl(0, 79%, 45%)",
       "success": "#4CAF50"
     },
     "borderRadius": "6px",
