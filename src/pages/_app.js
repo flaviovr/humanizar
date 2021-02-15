@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: ${({theme})=> theme.fontSize};
         color: ${({ theme }) => theme.colors.mainText};
         padding:0; 
-      margin:0;
+        margin:0;
     }
 
     body {

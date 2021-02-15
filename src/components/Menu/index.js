@@ -12,7 +12,7 @@ const Menu = (props)=>{
                 <Link href="/#" ><a>Humanizar</a></Link>
                 <ul className="submenu">
                     <span></span>
-                    <li><Link href="/albuns"><a>Álbum de Recordações</a></Link></li>
+                    <li><Link href="/album"><a>Álbum de Recordações</a></Link></li>
                     <li><Link href="/organizacao"><a>Organização</a></Link></li>
                     <li><Link href="/informacoes"><a>Informações</a></Link></li>
                 </ul>

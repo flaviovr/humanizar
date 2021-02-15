@@ -26,9 +26,9 @@ const Page = (props) => {
                 <p><span>(Esgotado) </span>Os apartamentos da categoria B <span>(Bloco A)</span> têm TV, ventilador de teto, telefone, frigobar e banheiro privativo.</p>
                 <p><span>(Esgotado) </span>Os apartamentos da categoria A <span>(Bloco B)</span> são reformados e equipados com TV, telefone, frigobar, ventilador de teto e banheiro privativo.</p>
 
-                <a href="images/page/ap3g.jpg" class="fb fotoap"><img src="images/page/ap3.jpg" alt="Foto Apto.  C"/>Foto Apto. C</a>
-                <a href="images/page/ap2g.jpg" class="fb fotoap"><img src="images/page/ap2.jpg" alt="Foto Apto.  B"/>Foto Apto.  B</a>
-                <a href="images/page/ap1g.jpg" class="fb fotoap fim"><img src="images/page/ap1.jpg" alt="Foto Apto.  A"/>Foto Apto.  A</a>
+                <a href="images/local/ap3g.jpg" class="fb fotoap"><img src="images/local/ap3.jpg" alt="Foto Apto.  C"/>Foto Apto. C</a>
+                <a href="images/local/ap2g.jpg" class="fb fotoap"><img src="images/local/ap2.jpg" alt="Foto Apto.  B"/>Foto Apto.  B</a>
+                <a href="images/local/ap1g.jpg" class="fb fotoap fim"><img src="images/local/ap1.jpg" alt="Foto Apto.  A"/>Foto Apto.  A</a>
 
             </div>
 
@@ -39,9 +39,9 @@ const Page = (props) => {
                 <p>Para maior conforto, todos possuem uma pia, são ensolarados, claros e bem equipados. Os banheiros são em vestiários coletivos, em cada andar (separados para homens e mulheres) com, pelo menos, 5 banheiros em cada um, com toda privacidade.</p>
                 <p>Os quartos para 2 pessoas estão localizados no Bloco A e os demais no Bloco C.</p>
                 <p>Não existem quartos no andar térreo. Os acessos aos quartos têm, pelo menos, um lance de escadas.</p>
-                <a href="images/page/quarto01g.jpg" rel="quarto" class="fb fotoqt"><img src="images/page/quarto01.jpg" alt="" border="0"/></a>
-                <a href="images/page/quarto02g.jpg" rel="quarto" class="fb fotoqt fim"><img src="images/page/quarto02.jpg" alt="" border="0"/></a>
-                <a href="images/page/quarto01g.jpg" rel="quarto" class="fb fotoqt" >Fotos dos quartos</a>
+                <a href="images/local/quarto01g.jpg" rel="quarto" class="fb fotoqt"><img src="images/local/quarto01.jpg" alt="" border="0"/></a>
+                <a href="images/local/quarto02g.jpg" rel="quarto" class="fb fotoqt fim"><img src="images/local/quarto02.jpg" alt="" border="0"/></a>
+                <a href="images/local/quarto01g.jpg" rel="quarto" class="fb fotoqt" >Fotos dos quartos</a>
             </div>
 
             <Sidebar item={item}/>
@@ -57,6 +57,22 @@ const Main = styled.div`
     min-height:740px; 
     margin-top:40px; 
     width: 640px; 
+    .texto p span { color:${({ theme }) => theme.colors.error};font-family:'Roboto'}
+    h3 span { color: #5A3698;}
+    .fotoap {
+        display: inline-block; margin: 0 25px 0 0;width: 190px; text-align: center; font-size: 18px; color: #ff99cc; 
+        &.fim { margin-right: 0px;}
+        img { width: 190px; height: auto;border-bottom: 5px solid #ff99cc;}
+        &:hover img {border-bottom: 5px solid #ad3e75;}
+    }
+    .fotoqt {
+        display: inline-block;margin: 0 25px 0 0;  width: 190px; text-align: center; font-size: 18px; color: #ff99cc;  margin-left: 90px;
+        img { width: 190px; height: auto;border-bottom: 5px solid #ff99cc;}
+        &.fim { margin-right: 0px; margin-left: 20px;}
+        &:hover img {border-bottom: 5px solid #ad3e75;}
+
+    }
+
 `
 export default Page;
 

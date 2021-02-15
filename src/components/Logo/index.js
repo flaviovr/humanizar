@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import Link from "next/link";
 
+const Logo = (props)=>{
+    
+    const isHome = props.isHome;
+    return <LogoContainer className={!isHome? 'small': null} ><Link href="/"><a><b>12º Humanizar</b> Sul Fluminense</a></Link></LogoContainer>;
+};
+
 const LogoContainer = styled.h1`
     display:block;
     margin:0px;
@@ -32,17 +38,11 @@ const LogoContainer = styled.h1`
             width: 315px;
             height: 70px;
             font-size: 0px;
-            background: url(images/page/logo-pequena.png) center center no-repeat;
+            background: url("/images/page/logo-pequena.png") center center no-repeat;
             b { font-size: 0px; }
         }
     }
 
-`;
-
-const Logo = (props)=>{
-    
-    const isHome = props.isHome;
-    return <LogoContainer className={!isHome? 'small': null} ><Link href="/"><a><b>12º Humanizar</b> Sul Fluminense</a></Link></LogoContainer>;
-};
+`; 
 
 export default Logo;

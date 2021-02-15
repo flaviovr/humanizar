@@ -38,7 +38,7 @@ const Rodape = (props) => {
 const RodapeContainer = styled.div`
     font-size: 50px;
     color: ${({ theme }) => theme.colors.mainText};
-    background: url(images/page/hr.png) top center no-repeat;
+    background: url("/images/page/hr.png") top center no-repeat;
     margin-top: 20px;
     padding-top: 20px;
     height: 170px;
