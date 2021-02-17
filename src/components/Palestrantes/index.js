@@ -8,7 +8,7 @@ const Palestrantes = (props) => {
 
             <li> 
                 <a href="palestrantes.php#Andre_Luiz_Rosa" className="item">
-                    <img src="images/palestrantes/1.jpg" alt="Carlos Pereira" width="300" height="180"/>
+                    <img src="/images/palestrantes/1.jpg" alt="Carlos Pereira" width="300" height="180"/>
                     <span className="decor"></span>
                     <p className="descg">Espírita de berço, dedica-se ao estudo das obras de Allan Kardec em consonância com as obras complementares de diversos autores. Palestrante e escritor espírita, colabora atualmente na Entidade Assistencial Espírita “Casa do Caminho” de Valinhos onde atualmente está presidente. Também possui autoria de títulos de livros.</p>
                     <p className="nome">André Luiz Rosa</p>
@@ -18,7 +18,7 @@ const Palestrantes = (props) => {
 
             <li>
                 <a href="palestrantes.php#Eduardo_Gibelli" className="item">
-                    <img src="images/palestrantes/2.jpg" alt="Eduardo Gibelli" width="300" height="180"/>
+                    <img src="/images/palestrantes/2.jpg" alt="Eduardo Gibelli" width="300" height="180"/>
                     <span className="decor"></span>
                     <p className="descg">Músico, compositor, palestrante espírita, aprendiz e semeador do evangelho de Jesus.  Nascido e residente na cidade de Franca/SP, trabalha há 15 anos com evangelização de crianças e adolescentes. Espírita, desde a infância, realiza estudos das Obras de Kardec há mais de 10 anos. Lançou o CD/DVD “Se fosse por um dia”. </p>
                     <p className="nome">Eduardo Gibelli</p>
@@ -28,7 +28,7 @@ const Palestrantes = (props) => {
 
             <li>
                 <a href="palestrantes.php#Marilane_Leite" className="item">
-                    <img src="images/palestrantes/3.jpg" alt="Marilane Leite" width="300" height="180"/>
+                    <img src="/images/palestrantes/3.jpg" alt="Marilane Leite" width="300" height="180"/>
                     <span className="decor"></span>
                     <p className="descg">Psicóloga, especialista em Educação, com formação em Neurolinguistica, Ciências Holísticas e Psicologia Transpessoal com certificação internacional. Formada em Coach Integral. Pós graduada em Base Transdisciplinar Holística. Faz Formação na UNIFESP para instrutora de Mindfulness. Possui 25 anos de trabalhos dedicados ao Desenvolvimento Humano.</p>
                     <p className="nome">Marilane Leite</p>

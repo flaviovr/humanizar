@@ -26,9 +26,9 @@ const Page = (props) => {
                 <p><span>(Esgotado) </span>Os apartamentos da categoria B <span>(Bloco A)</span> têm TV, ventilador de teto, telefone, frigobar e banheiro privativo.</p>
                 <p><span>(Esgotado) </span>Os apartamentos da categoria A <span>(Bloco B)</span> são reformados e equipados com TV, telefone, frigobar, ventilador de teto e banheiro privativo.</p>
 
-                <a href="images/local/ap3g.jpg" class="fb fotoap"><img src="images/local/ap3.jpg" alt="Foto Apto.  C"/>Foto Apto. C</a>
-                <a href="images/local/ap2g.jpg" class="fb fotoap"><img src="images/local/ap2.jpg" alt="Foto Apto.  B"/>Foto Apto.  B</a>
-                <a href="images/local/ap1g.jpg" class="fb fotoap fim"><img src="images/local/ap1.jpg" alt="Foto Apto.  A"/>Foto Apto.  A</a>
+                <a href="/images/local/ap3g.jpg" class="fb fotoap"><img src="/images/local/ap3.jpg" alt="Foto Apto.  C"/>Foto Apto. C</a>
+                <a href="/images/local/ap2g.jpg" class="fb fotoap"><img src="/images/local/ap2.jpg" alt="Foto Apto.  B"/>Foto Apto.  B</a>
+                <a href="/images/local/ap1g.jpg" class="fb fotoap fim"><img src="/images/local/ap1.jpg" alt="Foto Apto.  A"/>Foto Apto.  A</a>
 
             </div>
 
@@ -39,9 +39,9 @@ const Page = (props) => {
                 <p>Para maior conforto, todos possuem uma pia, são ensolarados, claros e bem equipados. Os banheiros são em vestiários coletivos, em cada andar (separados para homens e mulheres) com, pelo menos, 5 banheiros em cada um, com toda privacidade.</p>
                 <p>Os quartos para 2 pessoas estão localizados no Bloco A e os demais no Bloco C.</p>
                 <p>Não existem quartos no andar térreo. Os acessos aos quartos têm, pelo menos, um lance de escadas.</p>
-                <a href="images/local/quarto01g.jpg" rel="quarto" class="fb fotoqt"><img src="images/local/quarto01.jpg" alt="" border="0"/></a>
-                <a href="images/local/quarto02g.jpg" rel="quarto" class="fb fotoqt fim"><img src="images/local/quarto02.jpg" alt="" border="0"/></a>
-                <a href="images/local/quarto01g.jpg" rel="quarto" class="fb fotoqt" >Fotos dos quartos</a>
+                <a href="/images/local/quarto01g.jpg" rel="quarto" class="fb fotoqt"><img src="/images/local/quarto01.jpg" alt="" border="0"/></a>
+                <a href="/images/local/quarto02g.jpg" rel="quarto" class="fb fotoqt fim"><img src="/images/local/quarto02.jpg" alt="" border="0"/></a>
+                <a href="/images/local/quarto01g.jpg" rel="quarto" class="fb fotoqt" >Fotos dos quartos</a>
             </div>
 
             <Sidebar item={item}/>

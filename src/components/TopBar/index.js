@@ -25,7 +25,7 @@ const TopoContainer = styled.div`
     height: 490px; 
     margin: 0 -120px;
     padding: 0 120px;
-    background: #ABABB5 url(images/page/background-topo.jpg) top center no-repeat;
+    background: #ABABB5 url(/images/page/background-topo.jpg) top center no-repeat;
     &.small {
         height: 71px; 
         border-bottom: 1px solid #f2e3f1;

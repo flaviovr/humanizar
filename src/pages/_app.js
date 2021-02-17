@@ -4,10 +4,10 @@ import Head from 'next/head';
 import Background from '../components/Background';
 import TopBar from '../components/TopBar';
 import Rodape from '../components/Rodape';
+
 import config from '../../config.json';
 import db from '../../db.json';
 import {useRouter} from 'next/router';
-
 
 
 const GlobalStyle = createGlobalStyle`
@@ -53,7 +53,7 @@ const GlobalStyle = createGlobalStyle`
     a img {border:none;}
     a, a:hover {text-decoration:none;color: ${({ theme }) => theme.colors.primary}}
     a:hover { color: ${({ theme }) => theme.colors.primaryDark} ;}
-    hr { background: url(images/page/hr.png) 0px -1px no-repeat; border: none; margin: 10px; height: 5px; display: block; clear: both; }
+    hr { background: url(/images/page/hr.png) 0px -1px no-repeat; border: none; margin: 10px; height: 5px; display: block; clear: both; }
     h2 { font-size: 28px; color: ${({ theme }) => theme.colors.secondary} ; margin-bottom: 30px;/* height: 40px; */ line-height: 40px; padding: 0 10px;}
     h3 { font-size: 21px; color: ${({ theme }) => theme.colors.secondaryLight}; margin-bottom: 20px;padding: 0 10px;}
     h4 { font-size: 18px; color: ${({ theme }) => theme.colors.primary}; margin-bottom: 15px; padding: 0 10px;}
@@ -97,30 +97,31 @@ const theme = config.theme;
 export default function App({ Component, pageProps }) {
   
   const router = useRouter();
-  const {route} = router;
-  const isHome = route == '/' ? true : false;
-
+  
+  const isHome = router.route == '/' ? true : false;
+  
   return (
     <>
 
-      <Head>
-        <title>{config.title}</title>
-        <link rel="icon" href="http://humanizarsulfluminense.com.br/favicon.ico"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com"/>
-        <link href="https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Roboto&display=swap" rel="stylesheet"/>
-      </Head>
+        <Head>
+            <title>{config.title}</title>
+            <link rel="icon" href="http://humanizarsulfluminense.com.br/favicon.ico"/>
+            <link rel="preconnect" href="https://fonts.gstatic.com"/>
+            <link href="https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Roboto&display=swap" rel="stylesheet"/>
+        </Head>
 
       
 
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Background>
-          <TopBar isHome={isHome} />
-          <Component {...pageProps} data={db} isHome={isHome} />
-          <Rodape/>
-        </Background>
-        
-      </ThemeProvider>
+        <ThemeProvider theme={theme}>
+                <GlobalStyle />
+                <Background>
+                    
+                    <TopBar isHome={isHome} />
+                    <Component {...pageProps} data={db} isHome={isHome}  />
+                    <Rodape/>
+                </Background>
+            
+        </ThemeProvider>
 
     </>
   )

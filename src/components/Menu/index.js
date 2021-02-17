@@ -86,13 +86,13 @@ const MenuContainer = styled.ul`
             top:23px; right:50%; 
             height:0px;
             width:224px; 
-            background: url('images/page/background-submenu.png') top center; 
+            background: url('/images/page/background-submenu.png') top center; 
             margin-right:-112px; 
             padding: 20px 0 0 0; 
             z-index: 999;
    
             span { 
-                display: block; position: absolute; left:0px; bottom:-15px; width: 224px; height: 15px; background: url('images/page/background-submenu.png') bottom center; 
+                display: block; position: absolute; left:0px; bottom:-15px; width: 224px; height: 15px; background: url('/images/page/background-submenu.png') bottom center; 
             }
             
             li { 

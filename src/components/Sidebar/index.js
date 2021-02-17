@@ -5,7 +5,7 @@ const Sidebar = (props)=> {
     return (
         <SidebarContainer>
             
-            <img src="images/page/logo-prehome.png" alt="logo-humanizar-lateral" width="320"/>
+            <img src="/images/page/logo-prehome.png" alt="logo-humanizar-lateral" width="320"/>
 
             
             <hr/>

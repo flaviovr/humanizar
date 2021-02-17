@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import Palestrantes from '../components/Palestrantes';
 import MuralHome from '../components/Mural';
-
-
+import Modal from '../components/ModalWindow';
 
 const Home = (props) => {
 
@@ -10,6 +9,7 @@ const Home = (props) => {
     
     return (
         <Main>
+            {props.isHome && <Modal/>}
             <Palestrantes/>
             <hr/>
             <Frase>
