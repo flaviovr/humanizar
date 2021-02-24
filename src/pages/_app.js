@@ -47,11 +47,20 @@ export default function App({ Component, pageProps }) {
                     href='https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Roboto&display=swap'
                     rel='stylesheet'
                 />
+                <script
+                    async
+                    defer
+                    crossorigin='anonymous'
+                    src='https://connect.facebook.net/en_US/sdk.js#xfbml=1
+             &version={v10.0}
+             &appId={1234567890}
+             &autoLogAppEvents=1'
+                    nonce='FOKrbAYI'></script>
             </Head>
 
             <ThemeProvider theme={theme}>
                 <GlobalStyle />
-
+                <div id='fb-root'></div>
                 <Background>
                     <TopBar isHome={isHome} />
                     <Component {...pageProps} data={db} isHome={isHome} />
@@ -89,14 +98,16 @@ export default function App({ Component, pageProps }) {
                         <Rodape.Bloco>
                             <h5>Facebook.com/HumanizarSF</h5>
                             <p>Curta nossa FanPage no Facebook</p>
-                            <FacebookProvider appId='123456789'>
-                                <Like
-                                    href='http://www.facebook.com/humanizarsf'
-                                    colorScheme='dark'
-                                    showFaces
-                                    share
-                                />
-                            </FacebookProvider>
+                            <>
+                                <div
+                                    class='fb-like'
+                                    data-href='https://www.your-domain.com/your-page.html'
+                                    data-width=''
+                                    data-layout='standard'
+                                    data-action='like'
+                                    data-size='small'
+                                    data-share='true'></div>
+                            </>
                         </Rodape.Bloco>
 
                         <Rodape.Copyright>
