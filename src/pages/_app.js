@@ -4,7 +4,6 @@ import { useState } from "react";
 import Background from "../components/Background";
 import TopBar from "../components/TopBar";
 import Rodape, { validateEmail } from "../components/Rodape";
-import FacebookProvider, { Like } from "react-facebook-next";
 import config from "../../config.json";
 import db from "../../db.json";
 import { useRouter } from "next/router";
@@ -44,12 +43,6 @@ export default function App({ Component, pageProps }) {
                     href='https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Roboto&display=swap'
                     rel='stylesheet'
                 />
-                <script
-                    async
-                    defer
-                    crossorigin='anonymous'
-                    src='https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v10.0&appId=1234567890&autoLogAppEvents=1'
-                    nonce='ElpDLzmV'></script>
             </Head>
 
             <ThemeProvider theme={theme}>
@@ -92,16 +85,6 @@ export default function App({ Component, pageProps }) {
                         <Rodape.Bloco>
                             <h5>Facebook.com/HumanizarSF</h5>
                             <p>Curta nossa FanPage no Facebook</p>
-                            <>
-                                <div
-                                    class='fb-like'
-                                    data-href='https://www.facebook.com'
-                                    data-width=''
-                                    data-layout='standard'
-                                    data-action='like'
-                                    data-size='small'
-                                    data-share='true'></div>
-                            </>
                         </Rodape.Bloco>
 
                         <Rodape.Copyright>
