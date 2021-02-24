@@ -51,16 +51,16 @@ export default function App({ Component, pageProps }) {
                     async
                     defer
                     crossorigin='anonymous'
-                    src='https://connect.facebook.net/en_US/sdk.js#xfbml=1
-             &version={v10.0}
-             &appId={1234567890}
+                    src='https://connect.facebook.net/pt_BR/sdk.js#xfbml=1
+             &version=v10.0
+             &appId=1234567890
              &autoLogAppEvents=1'
-                    nonce='FOKrbAYI'></script>
+                    nonce='ElpDLzmV'></script>
             </Head>
 
             <ThemeProvider theme={theme}>
                 <GlobalStyle />
-                <div id='fb-root'></div>
+                <div id='fb-root' />
                 <Background>
                     <TopBar isHome={isHome} />
                     <Component {...pageProps} data={db} isHome={isHome} />
