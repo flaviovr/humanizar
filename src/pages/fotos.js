@@ -36,7 +36,7 @@ const Page = (props) => {
             <div className='fotos'>
                 {itensFancybox}
                 <FsLightbox
-                    toggler={lightboxController.toggler}
+                    toggler={openFancybox.toggler}
                     sources={[
                         "/images/local/Marista01.jpg",
                         "/images/local/Marista02.jpg",
@@ -57,7 +57,7 @@ const Page = (props) => {
                         "/images/local/Marista17.jpg",
                         "/images/local/Marista18.jpg",
                     ]}
-                    slide={lightboxController.slide}
+                    slide={openFancybox.slide}
                 />
             </div>
         </Main>

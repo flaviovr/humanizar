@@ -1,21 +1,121 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import Head from "next/head";
-
+import { useState } from "react";
 import Background from "../components/Background";
 import TopBar from "../components/TopBar";
-import Rodape from "../components/Rodape";
-
+import Rodape, { validateEmail } from "../components/Rodape";
+import FacebookProvider, { Like } from "react-facebook-next";
 import config from "../../config.json";
 import db from "../../db.json";
 import { useRouter } from "next/router";
 
+const theme = config.theme;
+
+export default function App({ Component, pageProps }) {
+    const router = useRouter();
+    const [emailNews, setEmailNews] = useState("");
+
+    const handleChange = (e) => {
+        setEmailNews(e.target.value);
+    };
+
+    const handleSubmitNews = (e) => {
+        e.preventDefault();
+        const email = e.target.emailNews.value;
+
+        if (!validateEmail(email)) {
+            alert("email Invalido");
+        } else {
+            alert("Testar se estaá cadastrado, se nao estiver, cadastra");
+            // if (DB.newsletter.find((el) => el == email)) {
+            //     alert("email existe");
+            // }
+        }
+    };
+    const isHome = router.route == "/" ? true : false;
+
+    return (
+        <>
+            <Head>
+                <title>{config.title}</title>
+                <link
+                    rel='icon'
+                    href='http://humanizarsulfluminense.com.br/favicon.ico'
+                />
+                <link rel='preconnect' href='https://fonts.gstatic.com' />
+                <link
+                    href='https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Roboto&display=swap'
+                    rel='stylesheet'
+                />
+            </Head>
+
+            <ThemeProvider theme={theme}>
+                <GlobalStyle />
+
+                <Background>
+                    <TopBar isHome={isHome} />
+                    <Component {...pageProps} data={db} isHome={isHome} />
+
+                    <Rodape>
+                        <Rodape.Frase>
+                            "Humanizar é resgatar em nós o abraço, a amizade, o
+                            perdão."
+                            <b>Bezerra de Menezes</b>
+                        </Rodape.Frase>
+
+                        <Rodape.Bloco>
+                            <h5>Newsletter</h5>
+                            <p>Receba as novidades no seu e-mail</p>
+                            <form
+                                name='formNews'
+                                id='formNews'
+                                onSubmit={handleSubmitNews}>
+                                <input
+                                    type='text'
+                                    name='emailNews'
+                                    value={emailNews}
+                                    className='campo placeholder'
+                                    onChange={handleChange}
+                                    placeholder='Digite seu email'
+                                />
+                                <input
+                                    type='submit'
+                                    defaultValue='OK'
+                                    className='enviar'
+                                />
+                            </form>
+                        </Rodape.Bloco>
+
+                        <Rodape.Bloco>
+                            <h5>Facebook.com/HumanizarSF</h5>
+                            <p>Curta nossa FanPage no Facebook</p>
+                            <FacebookProvider appId='123456789'>
+                                <Like
+                                    href='http://www.facebook.com/humanizarsf'
+                                    colorScheme='dark'
+                                    showFaces
+                                    share
+                                />
+                            </FacebookProvider>
+                        </Rodape.Bloco>
+
+                        <Rodape.Copyright>
+                            © Humanizar Sul Fluminense. Todos os direitos
+                            reservados.
+                        </Rodape.Copyright>
+                    </Rodape>
+                </Background>
+            </ThemeProvider>
+        </>
+    );
+}
 const GlobalStyle = createGlobalStyle`
  
     * {
         box-sizing: border-box;
         font-family: 'Amaranth', sans-serif;
-        font-size: ${({ theme }) => theme.fontSize};
-        color: ${({ theme }) => theme.colors.mainText};
+        font-size:  ${theme.fontSize};
+        color: ${theme.fontSize};
         padding:0; 
         margin:0;
     }
@@ -23,8 +123,8 @@ const GlobalStyle = createGlobalStyle`
     body {
       padding:0; 
       margin:0;
-      background:  url(${({ theme }) => theme.bg}) top center repeat-y; 
-      background-color:${({ theme }) => theme.colors.mainBg} ;
+      background:  url(${theme.bg}) top center repeat-y; 
+      background-color: ${theme.colors.mainBg} ;
       display: flex;
       flex-direction: column;
       scroll-behavior: smooth;
@@ -54,22 +154,17 @@ const GlobalStyle = createGlobalStyle`
       
     }
     a img {border:none;}
-    a, a:hover {text-decoration:none;color: ${({ theme }) =>
-        theme.colors.primary}}
-    a:hover { color: ${({ theme }) => theme.colors.primaryDark} ;}
+    a, a:hover {text-decoration:none;color: ${theme.colors.primary};}
+    a:hover { color: ${theme.colors.primaryDark};}
     hr { background: url(/images/page/hr.png) 0px -1px no-repeat; border: none; margin: 10px; height: 5px; display: block; clear: both; }
-    h2 { font-size: 28px; color: ${({ theme }) =>
-        theme.colors
-            .secondary} ; margin-bottom: 30px;/* height: 40px; */ line-height: 40px; padding: 0 10px;}
-    h3 { font-size: 21px; color: ${({ theme }) =>
-        theme.colors.secondaryLight}; margin-bottom: 20px;padding: 0 10px;}
-    h4 { font-size: 18px; color: ${({ theme }) =>
-        theme.colors.primary}; margin-bottom: 15px; padding: 0 10px;}
+    h2 { font-size: 28px; color: ${theme.colors.secondary} ; margin-bottom: 30px;/* height: 40px; */ line-height: 40px; padding: 0 10px;}
+    h3 { font-size: 21px; color: ${theme.colors.secondaryLight} ; margin-bottom: 20px;padding: 0 10px;}
+    h4 { font-size: 18px; color: ${theme.colors.primary}; margin-bottom: 15px; padding: 0 10px;}
     h5 { font-size: 16px; margin-bottom: 3px;}
     .btn {
         display: block;
         height: 32px;
-        background-color: #003366;
+        background-color: ${theme};
         font-size: 18px;
         line-height: 30px;
         color: #fff;
@@ -82,7 +177,7 @@ const GlobalStyle = createGlobalStyle`
         -o-border-radius: 4px;
         border-radius: 4px;
     }
-    .rnd {border-radius:${({ theme }) => theme.borderRadius}}
+    .rnd {border-radius:${theme.borderRadius};}
     .texto {
       padding: 0 10px;
       margin-bottom: 30px;
@@ -102,38 +197,3 @@ const GlobalStyle = createGlobalStyle`
     }
 
 `;
-
-const theme = config.theme;
-
-export default function App({ Component, pageProps }) {
-    const router = useRouter();
-
-    const isHome = router.route == "/" ? true : false;
-
-    return (
-        <>
-            <Head>
-                <title>{config.title}</title>
-                <link
-                    rel='icon'
-                    href='http://humanizarsulfluminense.com.br/favicon.ico'
-                />
-                <link rel='preconnect' href='https://fonts.gstatic.com' />
-                <link
-                    href='https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Roboto&display=swap'
-                    rel='stylesheet'
-                />
-            </Head>
-
-            <ThemeProvider theme={theme}>
-                <GlobalStyle />
-
-                <Background>
-                    <TopBar isHome={isHome} />
-                    <Component {...pageProps} data={db} isHome={isHome} />
-                    <Rodape />
-                </Background>
-            </ThemeProvider>
-        </>
-    );
-}

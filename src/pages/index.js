@@ -5,8 +5,7 @@ import Modal from "../components/ModalWindow";
 
 const Page = (props) => {
     const db = props.data;
-    //const isHome = props.isHome == "/" ? true : false;
-    //console.log(props.client);
+
     return (
         <Main>
             <Modal />
