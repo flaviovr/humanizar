@@ -38,10 +38,7 @@ export default function App({ Component, pageProps }) {
         <>
             <Head>
                 <title>{config.title}</title>
-                <link
-                    rel='icon'
-                    href='https://humanizarsulfluminense.com.br/favicon.ico'
-                />
+                <link rel='icon' href='./favicon.ico' />
                 <link rel='preconnect' href='https://fonts.gstatic.com' />
                 <link
                     href='https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Roboto&display=swap'
@@ -98,7 +95,7 @@ export default function App({ Component, pageProps }) {
                             <>
                                 <div
                                     class='fb-like'
-                                    data-href='https://www.your-domain.com/your-page.html'
+                                    data-href='https://www.facebook.com'
                                     data-width=''
                                     data-layout='standard'
                                     data-action='like'
