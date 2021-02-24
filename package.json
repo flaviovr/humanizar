@@ -1,23 +1,25 @@
 {
-  "name": "humanizar",
-  "version": "1.0.0",
-  "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "facebook-button": "^0.4.0",
-    "next": "latest",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
-    "react-fancybox": "^0.2.5",
-    "react-is": "^16.8.0",
-    "react-masonry-css": "^1.0.14",
-    "styled-components": "^5.0.0"
-  },
-  "devDependencies": {
-    "babel-plugin-styled-components": "^1.8.0"
-  },
-  "license": "MIT"
+    "name": "humanizar",
+    "version": "1.0.0",
+    "scripts": {
+        "dev": "next",
+        "build": "next build",
+        "start": "next start"
+    },
+    "dependencies": {
+        "emailjs": "^3.4.0",
+        "emailjs-com": "^2.6.4",
+        "fslightbox-react": "^1.6.2",
+        "next": "latest",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "react-is": "^17.0.1",
+        "react-masonry-css": "^1.0.14",
+        "styled-components": "^5.0.0"
+    },
+    "devDependencies": {
+        "@types/react": "^17.0.2",
+        "babel-plugin-styled-components": "^1.8.0"
+    },
+    "license": "MIT"
 }

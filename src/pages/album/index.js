@@ -1,38 +1,43 @@
-import styled from 'styled-components';
-import Link from 'next/link';
-
+import styled from "styled-components";
+import Link from "next/link";
 
 const Page = (props) => {
-   
     const db = props.data;
-   
-    const itemList = db.albuns.map((item)=>{
+
+    const itemList = db.albuns.map((item) => {
         return (
-            <Link href={"album/"+item.ano}>
-	    	    <a>
-                    <img width="300" height="230" src={"/images/albuns/"+item.ano+"/thumb/"+item.miniatura} />
-                    <b>{item.ano}</b>{item.nome}
+            <Link href={"/album/" + item.ano} key={item.ano} passref>
+                <a>
+                    <img
+                        width='300'
+                        height='230'
+                        src={
+                            "/images/albuns/" +
+                            item.ano +
+                            "/thumb/" +
+                            item.miniatura
+                        }
+                    />
+                    <b>{item.ano}</b>
+                    {item.nome}
                 </a>
             </Link>
-        )
+        );
     });
-   
+
     return (
         <Main>
             <h2>Álbum de Recordações</h2>
-            <div className="lista">
-                {itemList}
-            </div>
+            <div className='lista'>{itemList}</div>
         </Main>
     );
-
-}
+};
 
 const Main = styled.div`
     font-size: 50px;
-    color: ${({ theme }) => theme.colors.mainText};  
+    color: ${({ theme }) => theme.colors.mainText};
     padding-bottom: 40px;
-    margin-top:40px; 
+    margin-top: 40px;
     .lista {
         display: block;
         a {
@@ -43,7 +48,7 @@ const Main = styled.div`
             }
             display: inline-block;
             margin: 10px;
-           
+
             width: 300px;
             height: 300px;
             text-align: center;
@@ -52,15 +57,11 @@ const Main = styled.div`
             img {
                 display: block;
                 width: 300px;
-                height:235px;
+                height: 235px;
                 border-bottom: 5px solid #ff99cc;
                 margin-bottom: 5px;
             }
         }
     }
-`
+`;
 export default Page;
-
-
-
-

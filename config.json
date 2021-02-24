@@ -1,25 +1,35 @@
 {
-  "bg": "/images/page/background.png",
-  "title": "12º Humanizar Sul Fluminense",
-  "slogan": "Humanizar é resgatar em nós o abraço, a amizade, o perdão.",
-  "desc": "O Humanizar é um Encontro de Espiritismo e Humanização com o objetivo de sensibilizar e criar um espaço de debate, acerca da proposta “Atitude de Amor”, ideia difundida por Bezerra de Menezes.",    
-  "theme": {
+    "title": "12º Humanizar Sul Fluminense",
+    "slogan": "Humanizar é resgatar em nós o abraço, a amizade, o perdão.",
+    "desc": "O Humanizar é um Encontro de Espiritismo e Humanização com o objetivo de sensibilizar e criar um espaço de debate, acerca da proposta “Atitude de Amor”, ideia difundida por Bezerra de Menezes.",
     "bg": "/images/page/background.png",
-    "colors": {
-      "logo":"#fff",
-      "primary": "#ff99cc",
-      "primaryDark": "#ad3e75",
-      "secondary": "#003366",
-      "secondaryLight": "#6185c2",
-      "gray":"#595959",
-      "lightGray":"#ccdfcc",
-      "mainBg": "#ABABB5",
-      "contrastText": "#DCD023",
-      "mainText": "#4e4b47",
-      "error": "hsl(0, 79%, 45%)",
-      "success": "#4CAF50"
+
+    "inscricoes": {
+        "dataInscricao": [2021, 11, 12, 8, 0],
+        "dataNovoSite": [2021, 11, 12, 8, 0],
+        "quarto": 1,
+        "apa": 1,
+        "apb": 1,
+        "apc": 1
     },
-    "borderRadius": "6px",
-    "fontSize": "14px"
-  }
+
+    "theme": {
+        "bg": "/images/page/background.png",
+        "borderRadius": "6px",
+        "fontSize": "14px",
+        "colors": {
+            "logo": "#fff",
+            "primary": "#ff99cc",
+            "primaryDark": "#ad3e75",
+            "secondary": "#003366",
+            "secondaryLight": "#6185c2",
+            "gray": "#595959",
+            "lightGray": "#ccdfcc",
+            "mainBg": "#ABABB5",
+            "contrastText": "#DCD023",
+            "mainText": "#4e4b47",
+            "error": "hsl(0, 79%, 45%)",
+            "success": "#4CAF50"
+        }
+    }
 }

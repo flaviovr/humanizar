@@ -1,55 +1,83 @@
-import styled from 'styled-components';
-import Link from 'next/link';
-
+import React, { useState } from "react";
+import FsLightbox from "fslightbox-react";
+import styled from "styled-components";
 
 const Page = (props) => {
-   
     const db = props.data;
-   
-    const random = Math.floor(Math.random() * (db.mural.length-1))
-    const item = db.mural[random];
-   
+    const itensFancybox = [];
+    const sourcesFancybox = [];
+
+    const [openFancybox, setOpenFancybox] = useState({
+        toggler: false,
+        slide: 1,
+    });
+
+    for (let i = 1; i < 19; i++) {
+        let ii = i < 10 ? "0" + i : i;
+        sourcesFancybox.push("/images/local/Marista" + ii + ".jpg");
+        itensFancybox.push(
+            <a
+                key={i}
+                onClick={() => {
+                    setOpenFancybox({
+                        toggler: !openFancybox.toggler,
+                        slide: number,
+                    });
+                }}>
+                <img src={"/images/local/thumb/Marista" + ii + ".jpg"} />
+            </a>
+        );
+    }
+
     return (
         <Main>
             <h2>Fotos</h2>
             <h3>Centro Marista</h3>
-            <div className="fotos">
-                <Link  href="/images/local/Marista01.jpg" ><a className="fb foto" rel="lightbox"><img src="/images/local/thumb/Marista01.jpg" alt="" border="0"/></a></Link>
-                <Link  href="/images/local/Marista02.jpg" ><a className="fb foto" rel="lightbox"><img src="/images/local/thumb/Marista02.jpg" alt="" border="0"/></a></Link>
-                <Link  href="/images/local/Marista03.jpg" ><a className="fb foto" rel="lightbox"><img src="/images/local/thumb/Marista03.jpg" alt="" border="0"/></a></Link>
-                <Link  href="/images/local/Marista04.jpg" ><a className="fb foto" rel="lightbox"><img src="/images/local/thumb/Marista04.jpg" alt="" border="0"/></a></Link>
-                <Link  href="/images/local/Marista05.jpg" ><a className="fb foto" rel="lightbox"><img src="/images/local/thumb/Marista05.jpg" alt="" border="0"/></a></Link>
-                <Link  href="/images/local/Marista06.jpg" ><a className="fb foto" rel="lightbox"><img src="/images/local/thumb/Marista06.jpg" alt="" border="0"/></a></Link>
-                <Link  href="/images/local/Marista07.jpg" ><a className="fb foto" rel="lightbox"><img src="/images/local/thumb/Marista07.jpg" alt="" border="0"/></a></Link>
-                <Link  href="/images/local/Marista08.jpg" ><a className="fb foto" rel="lightbox"><img src="/images/local/thumb/Marista08.jpg" alt="" border="0"/></a></Link>
-                <Link  href="/images/local/Marista09.jpg" ><a className="fb foto" rel="lightbox"><img src="/images/local/thumb/Marista09.jpg" alt="" border="0"/></a></Link>
-                <Link  href="/images/local/Marista10.jpg" ><a className="fb foto" rel="lightbox"><img src="/images/local/thumb/Marista10.jpg" alt="" border="0"/></a></Link>
-                <Link  href="/images/local/Marista11.jpg" ><a className="fb foto" rel="lightbox"><img src="/images/local/thumb/Marista11.jpg" alt="" border="0"/></a></Link>
-                <Link  href="/images/local/Marista12.jpg" ><a className="fb foto" rel="lightbox"><img src="/images/local/thumb/Marista12.jpg" alt="" border="0"/></a></Link>
-                <Link  href="/images/local/Marista13.jpg" ><a className="fb foto" rel="lightbox"><img src="/images/local/thumb/Marista13.jpg" alt="" border="0"/></a></Link>
-                <Link  href="/images/local/Marista14.jpg" ><a className="fb foto" rel="lightbox"><img src="/images/local/thumb/Marista14.jpg" alt="" border="0"/></a></Link>
-                <Link  href="/images/local/Marista15.jpg" ><a className="fb foto" rel="lightbox"><img src="/images/local/thumb/Marista15.jpg" alt="" border="0"/></a></Link>
-                <Link  href="/images/local/Marista16.jpg" ><a className="fb foto" rel="lightbox"><img src="/images/local/thumb/Marista16.jpg" alt="" border="0"/></a></Link>
-                <Link  href="/images/local/Marista17.jpg" ><a className="fb foto" rel="lightbox"><img src="/images/local/thumb/Marista17.jpg" alt="" border="0"/></a></Link>
-                <Link href="/images/local/Marista18.jpg" ><a className="fb foto" rel="lightbox"><img src="/images/local/thumb/Marista18.jpg" alt="" border="0"/></a></Link>
+            <div className='fotos'>
+                {itensFancybox}
+                <FsLightbox
+                    toggler={lightboxController.toggler}
+                    sources={[
+                        "/images/local/Marista01.jpg",
+                        "/images/local/Marista02.jpg",
+                        "/images/local/Marista03.jpg",
+                        "/images/local/Marista04.jpg",
+                        "/images/local/Marista05.jpg",
+                        "/images/local/Marista06.jpg",
+                        "/images/local/Marista07.jpg",
+                        "/images/local/Marista08.jpg",
+                        "/images/local/Marista09.jpg",
+                        "/images/local/Marista10.jpg",
+                        "/images/local/Marista11.jpg",
+                        "/images/local/Marista12.jpg",
+                        "/images/local/Marista13.jpg",
+                        "/images/local/Marista14.jpg",
+                        "/images/local/Marista15.jpg",
+                        "/images/local/Marista16.jpg",
+                        "/images/local/Marista17.jpg",
+                        "/images/local/Marista18.jpg",
+                    ]}
+                    slide={lightboxController.slide}
+                />
             </div>
-            
         </Main>
     );
-
-}
+};
 
 const Main = styled.div`
     font-size: 50px;
-    color: ${({ theme }) => theme.colors.mainText};  
+    color: ${({ theme }) => theme.colors.mainText};
     padding-bottom: 40px;
-    margin-top:40px; 
+    margin-top: 40px;
     .fotos {
-        display:block;
+        .fslightbox-container {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        display: block;
         a {
             display: inline-block;
             margin: 0px 10px 20px 10px;
-            
+            cursor: pointer;
             overflow: hidden;
             border-bottom: 5px solid #ff99cc;
             width: 300px;
@@ -64,9 +92,5 @@ const Main = styled.div`
             }
         }
     }
-`
+`;
 export default Page;
-
-
-
-

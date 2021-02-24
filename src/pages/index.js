@@ -1,46 +1,56 @@
-import styled from 'styled-components';
-import Palestrantes from '../components/Palestrantes';
-import MuralHome from '../components/Mural';
-import Modal from '../components/ModalWindow';
+import styled from "styled-components";
+import Palestrantes from "../components/Palestrantes";
+import MuralHome from "../components/Mural";
+import Modal from "../components/ModalWindow";
 
-const Home = (props) => {
-
+const Page = (props) => {
     const db = props.data;
-    
+    //const isHome = props.isHome == "/" ? true : false;
+    //console.log(props.client);
     return (
         <Main>
-            {props.isHome && <Modal/>}
-            <Palestrantes/>
-            <hr/>
+            <Modal />
+            <Palestrantes /> <hr />
             <Frase>
-                "Humanizar é resgatar em nós o abraço, a amizade, o perdão."<b>Bezerra de Menezes</b>
+                "Humanizar é resgatar em nós o abraço, a amizade, o perdão."
+                <b>Bezerra de Menezes</b>
             </Frase>
-            <hr/>
+            <hr />
             <Frase>
-                Mural
-                <a href="mural.php">ver todos recados</a>
+                Mural <a href='mural.php'>ver todos recados</a>
             </Frase>
-            <MuralHome data={db.mural}/>
+            <MuralHome data={db.mural} />
         </Main>
     );
-}
-
-
+};
 
 const Main = styled.div`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.mainText};  
-  padding-bottom: 40px;
-  
-`
+    font-size: 50px;
+    color: ${({ theme }) => theme.colors.mainText};
+    padding-bottom: 40px;
+`;
 
 const Frase = styled.p`
-  font-size: 21px; text-align: center; margin: 20px 0;position:relative;
-    b {display: block;  opacity: .5; font-weight: normal;  text-align: center; font-size: 16px;}
+    font-size: 21px;
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+    b {
+        display: block;
+        opacity: 0.5;
+        font-weight: normal;
+        text-align: center;
+        font-size: 16px;
+    }
     a {
-      position: absolute; top:5px; right:10px; color:${({ theme }) => theme.colors.primary};
-      :hover { color:${({ theme }) => theme.colors.primaryDark};}
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        color: ${({ theme }) => theme.colors.primary};
+        :hover {
+            color: ${({ theme }) => theme.colors.primaryDark};
+        }
     }
 `;
 
-export default Home;
+export default Page;

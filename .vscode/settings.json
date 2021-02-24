@@ -1,3 +1,9 @@
 {
-    "editor.fontLigatures": true
+    "editor.fontLigatures": true,
+    "files.exclude": {
+        ".next/": true,
+        "node_modules/": true,
+        ".vscode/": true
+    },
+    "editor.fontSize": 15
 }
