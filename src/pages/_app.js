@@ -103,7 +103,7 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         font-family: 'Amaranth', sans-serif;
         font-size:  ${theme.fontSize};
-        color: ${theme.fontSize};
+        color: ${theme.colors.mainText};
         padding:0; 
         margin:0;
     }
@@ -172,6 +172,7 @@ const GlobalStyle = createGlobalStyle`
       font-family: "Roboto";
       p { 
         font-family: "Roboto";
+       
         margin-bottom: 13px;
         line-height: 20px;
         font-size: 14px;

@@ -65,6 +65,7 @@ const MuralItem = styled.a`
     margin: 10px;
     float: left;
     overflow: hidden;
+
     border-radius: ${({ theme }) => theme.borderRadius};
     .data {
         font-size: 12px;
