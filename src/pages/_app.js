@@ -40,7 +40,7 @@ export default function App({ Component, pageProps }) {
                 <title>{config.title}</title>
                 <link
                     rel='icon'
-                    href='http://humanizarsulfluminense.com.br/favicon.ico'
+                    href='https://humanizarsulfluminense.com.br/favicon.ico'
                 />
                 <link rel='preconnect' href='https://fonts.gstatic.com' />
                 <link
@@ -51,10 +51,7 @@ export default function App({ Component, pageProps }) {
                     async
                     defer
                     crossorigin='anonymous'
-                    src='https://connect.facebook.net/pt_BR/sdk.js#xfbml=1
-             &version=v10.0
-             &appId=1234567890
-             &autoLogAppEvents=1'
+                    src='https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v10.0&appId=1234567890&autoLogAppEvents=1'
                     nonce='ElpDLzmV'></script>
             </Head>
 
