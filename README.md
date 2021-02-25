@@ -1,6 +1,6 @@
-# ReactJs with styled-components
+# Nextjs: ReactJs with styled-components
 
-Converting old project Php/html/js based webpage using Next.js/ReactJs with styled-components and sqLite database.
+Converting old Php/html/js based webpage[webpage](http://humanizarsulfluminense.com.br){target:`_blank`} using Next.js/ReactJs with styled-components and sqLite database.
 
 ## How to use
 
@@ -8,6 +8,11 @@ Converting old project Php/html/js based webpage using Next.js/ReactJs with styl
 -   Install dependencies [`node`](https://nodejs.org/en/)
 -   Run in dev mode (localhost:3000)
 -   No configuration needed
+
+## To-dos`s
+
+-   Implement actual database
+-   Improve CSS - Make it Responsible
 
 ```bash
 git clone https://github.com/flaviovr/humanizar.git my-folder
