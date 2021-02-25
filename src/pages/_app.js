@@ -199,7 +199,7 @@ const GlobalStyle = createGlobalStyle`
         background:${theme.colors.secondary}!important;
     }
     .fslightbox-toolbar{
-        background:transparent;
+        background:transparent!important;
     }
     .fslightbox-toolbar-button {
         background: ${theme.colors.secondary}!important;

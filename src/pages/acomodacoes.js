@@ -136,7 +136,7 @@ const Page = (props) => {
                     <img src='/images/local/quarto02.jpg' />
                 </a>
                 <a
-                    class='fotoqt'
+                    className='fotoqt'
                     onClick={() =>
                         setFbQuarto({
                             toggler: !fbQuarto.toggler,

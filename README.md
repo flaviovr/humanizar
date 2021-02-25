@@ -1,6 +1,6 @@
 # Nextjs: ReactJs with styled-components
 
-Converting old Php/html/js based webpage[`WebPage`](http://humanizarsulfluminense.com.br){target:`_blank`} using Next.js/ReactJs with styled-components and sqLite database.
+Converting old Php/html/js based [`webpage`](http://humanizarsulfluminense.com.br) using Next.js/ReactJs with styled-components and sqLite database.
 
 ## How to use
 
@@ -9,14 +9,32 @@ Converting old Php/html/js based webpage[`WebPage`](http://humanizarsulfluminens
 -   Run in dev mode (localhost:3000)
 -   No configuration needed
 
-## To-dos`s
-
--   Implement actual database
--   Improve CSS - Make it Responsible
-
 ```bash
 git clone https://github.com/flaviovr/humanizar.git my-folder
 cd my-folder
 npm install
 npm run dev
 ```
+
+## To-dos`s
+
+-   ~~Create prototype Json data~~
+-   ~~Move all actual database driven config to json~~
+-   ~~Recreat actual interface~~
+-   Recreate config logic
+-   Recreate missing functionality
+
+    -   Implement newsEmail database saving
+    -   Implement missing modals
+    -   Implement Mural
+        -   Pagination
+        -   Modal
+    -   Implement Contact
+        -   Save in database
+        -   ~~Implement mail sending~~
+
+-   Improve CSS - Make it Responsible
+-   Add actual database
+-   Move database to SQLite
+-   Add Dashboard
+-   Improve CSS - Make it Responsible
