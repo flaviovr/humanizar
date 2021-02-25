@@ -34,7 +34,6 @@ npm run dev
         -   ~~Implement mail sending~~
 
 -   Improve CSS - Make it Responsible
+-   Add Config Dashboard
 -   Add actual database
--   Move database to SQLite
--   Add Dashboard
--   Improve CSS - Make it Responsible
+-   Change database schema
