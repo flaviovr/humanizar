@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Palestrantes from "../components/Palestrantes";
 import MuralHome from "../components/Mural";
 import Modal from "../components/ModalWindow";
+import Link from "next/link";
 
 const Page = (props) => {
     const db = props.data;
@@ -16,7 +17,10 @@ const Page = (props) => {
             </Frase>
             <hr />
             <Frase>
-                Mural <a href='mural.php'>ver todos recados</a>
+                Mural{" "}
+                <Link href='/mural'>
+                    <a>ver todos recados</a>
+                </Link>
             </Frase>
             <MuralHome data={db.mural} />
         </Main>

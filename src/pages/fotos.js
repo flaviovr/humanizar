@@ -21,7 +21,7 @@ const Page = (props) => {
                 onClick={() => {
                     setOpenFancybox({
                         toggler: !openFancybox.toggler,
-                        slide: number,
+                        slide: i,
                     });
                 }}>
                 <img src={"/images/local/thumb/Marista" + ii + ".jpg"} />
@@ -70,9 +70,6 @@ const Main = styled.div`
     padding-bottom: 40px;
     margin-top: 40px;
     .fotos {
-        .fslightbox-container {
-            background: rgba(255, 255, 255, 0.9);
-        }
         display: block;
         a {
             display: inline-block;

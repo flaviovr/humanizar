@@ -7,7 +7,7 @@ const Page = (props) => {
     return (
         <Main>
             <h2>Mural de Recados</h2>
-            <div class='texto'>
+            <div className='texto'>
                 <p>
                     Este espaço foi criado para você compartilhar a importância
                     do Humanizar em sua vida. Conte sobre seu aprendizado, suas
@@ -17,7 +17,10 @@ const Page = (props) => {
                     importante pra você!
                 </p>
             </div>
-            <a href='_enviarRecado.php' class='btn fbMural'>
+            <a
+                href='_enviarRecado.php'
+                className='btn fbMural'
+                onClick={(e) => e.preventDefault()}>
                 Deixe seu Recado
             </a>
             <hr />
