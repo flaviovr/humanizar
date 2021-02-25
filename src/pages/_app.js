@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }) {
         <>
             <Head>
                 <title>{config.title}</title>
-                <link rel='icon' href='./favicon.ico' />
+                <link rel='icon' href='/favicon.ico' />
                 <link rel='preconnect' href='https://fonts.gstatic.com' />
                 <link
                     href='https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Roboto&display=swap'
@@ -47,7 +47,7 @@ export default function App({ Component, pageProps }) {
 
             <ThemeProvider theme={theme}>
                 <GlobalStyle />
-                <div id='fb-root' />
+
                 <Background>
                     <TopBar isHome={isHome} />
                     <Component {...pageProps} data={db} isHome={isHome} />
@@ -152,7 +152,7 @@ const GlobalStyle = createGlobalStyle`
     .btn {
         display: block;
         height: 32px;
-        background-color: ${theme};
+        background-color: ${theme.colors.secondary};
         font-size: 18px;
         line-height: 30px;
         color: #fff;
@@ -164,6 +164,9 @@ const GlobalStyle = createGlobalStyle`
         -moz-border-radius: 4px;
         -o-border-radius: 4px;
         border-radius: 4px;
+        &:hover {
+            color:${theme.colors.secondaryLight};
+        }
     }
     .rnd {border-radius:${theme.borderRadius};}
     .texto {
@@ -182,7 +185,31 @@ const GlobalStyle = createGlobalStyle`
       }
     }
     .fslightbox-container {
-        background: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.9)!important;
     }
-
+    .fslightbox-source-inner {
+        background: #fff;
+        padding: 10px;
+        box-shadow: 0px 0px 70px 20px rgba(0, 0, 0, 0.3);
+    }
+    .fslightbox-flex-centered span{
+        color:${theme.colors.secondaryLight}!important;
+    }
+    .fslightbox-flex-centered span.fslightbox-slash{
+        background:${theme.colors.secondary}!important;
+    }
+    .fslightbox-toolbar{
+        background:transparent;
+    }
+    .fslightbox-toolbar-button {
+        background: ${theme.colors.secondary}!important;
+        border-radius:50%;
+    }
+    .fslightbox-toolbar-button:nth-child(1) {
+     display: none;
+    }
+    .fslightbox-slide-btn{
+        background: ${theme.colors.secondary}!important;
+        border-radius:50%;
+    }
 `;
