@@ -1,17 +1,34 @@
-import { createGlobalStyle, ThemeProvider } from "styled-components";
-import Head from "next/head";
 import { useState } from "react";
-import Background from "../components/Background";
-import TopBar from "../components/TopBar";
-import Rodape, { validateEmail } from "../components/Rodape";
-import config from "../../config.json";
-import db from "../../db.json";
 import { useRouter } from "next/router";
+
+import Head from "next/head";
+import App from "next/app";
+
+import GlobalStyle from "../assets/global.style";
+import { ThemeProvider } from "styled-components";
+
+import Container from "../components/Layout/Container";
+import TopBar from "../components/TopBar";
+import Rodape, { validateEmail } from "../components/Layout/Rodape";
+import config from "../assets/config.json";
+
+// Calculate config
+config.inscricoes.total =
+    config.inscricoes.apa +
+    config.inscricoes.apb +
+    config.inscricoes.apc +
+    config.inscricoes.quarto;
+
+let dat = new Date(...config.inscricoes.dataInscricao);
+let today = new Date();
+config.inscricoes.isOpen = today >= dat;
 
 const theme = config.theme;
 
-export default function App({ Component, pageProps }) {
+function MyApp({ Component, pageProps }) {
     const router = useRouter();
+    const isHome = router.route == "/" ? true : false;
+
     const [emailNews, setEmailNews] = useState("");
 
     const handleChange = (e) => {
@@ -31,7 +48,6 @@ export default function App({ Component, pageProps }) {
             // }
         }
     };
-    const isHome = router.route == "/" ? true : false;
 
     return (
         <>
@@ -47,10 +63,9 @@ export default function App({ Component, pageProps }) {
 
             <ThemeProvider theme={theme}>
                 <GlobalStyle />
-
-                <Background>
-                    <TopBar isHome={isHome} />
-                    <Component {...pageProps} data={db} isHome={isHome} />
+                <Container>
+                    <TopBar {...pageProps} isHome={isHome} config={config} />
+                    <Component {...pageProps} isHome={isHome} config={config} />
 
                     <Rodape>
                         <Rodape.Frase>
@@ -92,124 +107,10 @@ export default function App({ Component, pageProps }) {
                             reservados.
                         </Rodape.Copyright>
                     </Rodape>
-                </Background>
+                </Container>
             </ThemeProvider>
         </>
     );
 }
-const GlobalStyle = createGlobalStyle`
- 
-    * {
-        box-sizing: border-box;
-        font-family: 'Amaranth', sans-serif;
-        font-size:  ${theme.fontSize};
-        color: ${theme.colors.mainText};
-        padding:0; 
-        margin:0;
-    }
 
-    body {
-      padding:0; 
-      margin:0;
-      background:  url(${theme.bg}) top center repeat-y; 
-      background-color: ${theme.colors.mainBg} ;
-      display: flex;
-      flex-direction: column;
-      scroll-behavior: smooth;
-      font-family: 'Amaranth', sans-serif;
-      
-      -webkit-backface-visibility:hidden;
-      backface-visibility:hidden;
-      -webkit-font-smoothing:antialiased;
-      &.modal {
-          overflow:hidden;
-          max-height:100vh;
-      }
-    }
-
-    html, body {
-       min-height: 100vh;
-    }
-
-    #__next {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-    }
-
-    p {
-       margin:0;padding:0;
-      
-    }
-    a img {border:none;}
-    a, a:hover {text-decoration:none;color: ${theme.colors.primary};}
-    a:hover { color: ${theme.colors.primaryDark};}
-    hr { background: url(/images/page/hr.png) 0px -1px no-repeat; border: none; margin: 10px; height: 5px; display: block; clear: both; }
-    h2 { font-size: 28px; color: ${theme.colors.secondary} ; margin-bottom: 30px;/* height: 40px; */ line-height: 40px; padding: 0 10px;}
-    h3 { font-size: 21px; color: ${theme.colors.secondaryLight} ; margin-bottom: 20px;padding: 0 10px;}
-    h4 { font-size: 18px; color: ${theme.colors.primary}; margin-bottom: 15px; padding: 0 10px;}
-    h5 { font-size: 16px; margin-bottom: 3px;}
-    .btn {
-        display: block;
-        height: 32px;
-        background-color: ${theme.colors.secondary};
-        font-size: 18px;
-        line-height: 30px;
-        color: #fff;
-        font-weight: bold;
-        text-align: center;
-        cursor: pointer;
-        font-family: "Amaranth";
-        -webkit-border-radius: 4px;
-        -moz-border-radius: 4px;
-        -o-border-radius: 4px;
-        border-radius: 4px;
-        &:hover {
-            color:${theme.colors.secondaryLight};
-        }
-    }
-    .rnd {border-radius:${theme.borderRadius};}
-    .texto {
-      padding: 0 10px;
-      margin-bottom: 30px;
-      font-family: "Roboto";
-      p { 
-        font-family: "Roboto";
-       
-        margin-bottom: 13px;
-        line-height: 20px;
-        font-size: 14px;
-        &:last-child{
-          margin-bottom: 0px;
-        }
-      }
-    }
-    .fslightbox-container {
-        background: rgba(255, 255, 255, 0.9)!important;
-    }
-    .fslightbox-source-inner {
-        background: #fff;
-        padding: 10px;
-        box-shadow: 0px 0px 70px 20px rgba(0, 0, 0, 0.3);
-    }
-    .fslightbox-flex-centered span{
-        color:${theme.colors.secondaryLight}!important;
-    }
-    .fslightbox-flex-centered span.fslightbox-slash{
-        background:${theme.colors.secondary}!important;
-    }
-    .fslightbox-toolbar{
-        background:transparent!important;
-    }
-    .fslightbox-toolbar-button {
-        background: ${theme.colors.secondary}!important;
-        border-radius:50%;
-    }
-    .fslightbox-toolbar-button:nth-child(1) {
-     display: none;
-    }
-    .fslightbox-slide-btn{
-        background: ${theme.colors.secondary}!important;
-        border-radius:50%;
-    }
-`;
+export default MyApp;

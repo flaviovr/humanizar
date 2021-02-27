@@ -1,18 +1,50 @@
+import React, { useState } from "react";
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar";
+import FsLightbox from "fslightbox-react";
+
+import Link from "next/link";
 
 const Page = (props) => {
-    const db = props.data;
+    const { config, itemMural } = props;
+    const [openModal, setOpenModal] = useState(false);
 
-    const random = Math.floor(Math.random() * (db.mural.length - 1));
-    const item = db.mural[random];
+    const sourceFancybox = [];
+    const sourceModal = config.inscricoes.isOpen ? (
+        config.inscricoes.total == 4 ? (
+            <div>
+                <h3 class='data modal'>
+                    Vagas Esgotadas
+                    <br />
+                    Esperamos você na próxima edição.
+                </h3>
+            </div>
+        ) : (
+            <div>
+                <h3 class='data modal'>
+                    Inscrições Abertas
+                    <br />
+                    Vagas Limitadas.
+                </h3>
+            </div>
+        )
+    ) : (
+        <div>
+            <h3 class='data modal'>
+                Inscrições a partir de <br />8 de Dezembro de 2019 às 8h.
+            </h3>
+        </div>
+    );
 
+    const texto = config.inscricoes.isOpen
+        ? config.inscricoes.total == 4
+            ? "Vagas Esgotadas | Esperamos você na próxima edição "
+            : "Inscrições Abertas | Vagas Limitadas."
+        : "A partir de 8 de Dezembro de 2019 às 8h.";
     return (
         <Main>
             <h2>Inscrições</h2>
-            <h2 className='data'>
-                Vagas Esgotadas | Esperamos você na próxima edição.
-            </h2>
+            <h2 className='data'>{texto}</h2>
             <h3>Como se Inscrever</h3>
             <div className='texto'>
                 <p>As inscrições são individuais.</p>
@@ -93,17 +125,19 @@ const Page = (props) => {
                     <p className='valor'>R$ 525,00</p>
                     <a
                         title='Quarto'
-                        href='_img/site/quarto01g.jpg'
+                        href='/acomodacoes'
                         rel='q'
                         className='ver btn rnd fb'>
                         Veja a Foto
                     </a>
                     <a
                         title='Quarto'
-                        href='_img/site/quarto02g.jpg'
+                        href='/acomodacoes'
                         rel='q'
                         className='fb'></a>
-                    <span>Vagas Esgotadas</span>
+                    {config.inscricoes.quarto == 1 && (
+                        <span>Vagas Esgotadas</span>
+                    )}
                 </div>
 
                 <div className='item rnd'>
@@ -111,11 +145,11 @@ const Page = (props) => {
                     <p className='valor'>R$ 678,00</p>
                     <a
                         title='Apartamento C'
-                        href='_img/site/ap3g.jpg'
+                        href='/acomodacoes'
                         className='ver btn rnd fb'>
                         Veja a Foto
                     </a>
-                    <span>Vagas Esgotadas</span>
+                    {config.inscricoes.apc == 1 && <span>Vagas Esgotadas</span>}
                 </div>
 
                 <div className='item rnd'>
@@ -123,11 +157,11 @@ const Page = (props) => {
                     <p className='valor'>R$ 760,00</p>
                     <a
                         title='Apartamento B'
-                        href='_img/site/ap2g.jpg'
+                        href='/acomodacoes'
                         className='ver btn rnd fb'>
                         Veja a Foto
                     </a>
-                    <span>Vagas Esgotadas</span>
+                    {config.inscricoes.apb == 1 && <span>Vagas Esgotadas</span>}
                 </div>
 
                 <div className='item rnd'>
@@ -135,11 +169,11 @@ const Page = (props) => {
                     <p className='valor'>R$ 885,00</p>
                     <a
                         title='Apartamento A'
-                        href='_img/site/ap1g.jpg'
+                        href='/acomodacoes'
                         className='ver btn rnd fb'>
                         Veja a Foto
                     </a>
-                    <span>Vagas Esgotadas</span>
+                    {config.inscricoes.apa == 1 && <span>Vagas Esgotadas</span>}
                 </div>
             </div>
 
@@ -203,15 +237,37 @@ const Page = (props) => {
                     e-mail, na confirmação da inscrição.
                 </p>
             </div>
-            <a href='#splash' className='btnTopo rnd fb'>
-                Inscreva-se Já!
-            </a>
+            <FsLightbox toggler={openModal} sources={[sourceModal]} slide={1} />
+            {config.inscricoes.isOpen && config.inscricoes.total < 4 ? (
+                <Link href='/ficha-inscricao'>
+                    <a className='btnTopo rnd'>Inscreva-se Já!</a>
+                </Link>
+            ) : (
+                <a
+                    onClick={(e) => {
+                        e.preventDefault();
+                        setOpenModal(!openModal);
+                    }}
+                    className='btnTopo rnd fb'>
+                    Inscreva-se Já!
+                </a>
+            )}
 
-            <Sidebar item={item} />
+            <Sidebar item={itemMural} />
         </Main>
     );
 };
+export async function getServerSideProps(context) {
+    const res = await fetch(
+        "http://localhost:3000/api/mural?limite=1&aleatorio=sim"
+    );
+    const data = await res.json();
 
+    return {
+        props: { itemMural: data[0] },
+        revalidate: 60 * 5,
+    };
+}
 const Main = styled.div`
     position: relative;
     color: ${({ theme }) => theme.colors.mainText};
@@ -219,6 +275,11 @@ const Main = styled.div`
     min-height: 740px;
     margin-top: 40px;
     width: 640px;
+    .modal {
+        font-size: 40px;
+        text-align: center;
+        margin: 20px;
+    }
     .texto {
         p b,
         p span {

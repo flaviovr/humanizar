@@ -2,10 +2,7 @@ import styled from "styled-components";
 import Sidebar from "../components/Sidebar";
 
 const Page = (props) => {
-    const db = props.data;
-
-    const random = Math.floor(Math.random() * (db.mural.length - 1));
-    const item = db.mural[random];
+    const { config, itemMural } = props;
 
     return (
         <Main>
@@ -149,11 +146,22 @@ const Page = (props) => {
                     ao motorista saltar no Centro Marista.
                 </p>
             </div>
-            <Sidebar item={item} />
+            <Sidebar item={itemMural} />
         </Main>
     );
 };
 
+export async function getServerSideProps(context) {
+    const res = await fetch(
+        "http://localhost:3000/api/mural?limite=1&aleatorio=sim"
+    );
+    const data = await res.json();
+
+    return {
+        props: { itemMural: data[0] },
+        revalidate: 60 * 5,
+    };
+}
 const Main = styled.div`
     position: relative;
     color: ${({ theme }) => theme.colors.mainText};

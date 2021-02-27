@@ -4,10 +4,7 @@ import styled from "styled-components";
 import Sidebar from "../components/Sidebar";
 
 const Page = (props) => {
-    const db = props.data;
-
-    const random = Math.floor(Math.random() * (db.mural.length - 1));
-    const item = db.mural[random];
+    const { config, itemMural } = props;
 
     const [fbQuarto, setFbQuarto] = useState({
         toggler: false,
@@ -41,22 +38,23 @@ const Page = (props) => {
                     Os apartamentos são classificados em 3 categorias: A, B e C.
                 </p>
                 <p>
-                    <span>(Esgotado) </span>Os apartamentos de categoria C{" "}
-                    <span>(Cenáculo)</span> têm telefone, ventilador de teto e
-                    banheiro privativo. Dispõem de uma sala de TV e um frigobar
-                    de uso comunitário. Eles têm a vantagem de serem silenciosos
-                    e ainda mais perto da Natureza, por estarem localizados na
-                    parte mais alta.
+                    {config.inscricoes.apc == 1 && <span>(Esgotado) </span>}Os
+                    apartamentos de categoria C <span>(Cenáculo)</span> têm
+                    telefone, ventilador de teto e banheiro privativo. Dispõem
+                    de uma sala de TV e um frigobar de uso comunitário. Eles têm
+                    a vantagem de serem silenciosos e ainda mais perto da
+                    Natureza, por estarem localizados na parte mais alta.
                 </p>
                 <p>
-                    <span>(Esgotado) </span>Os apartamentos da categoria B{" "}
-                    <span>(Bloco A)</span> têm TV, ventilador de teto, telefone,
-                    frigobar e banheiro privativo.
+                    {config.inscricoes.apb == 1 && <span>(Esgotado) </span>}Os
+                    apartamentos da categoria B <span>(Bloco A)</span> têm TV,
+                    ventilador de teto, telefone, frigobar e banheiro privativo.
                 </p>
                 <p>
-                    <span>(Esgotado) </span>Os apartamentos da categoria A{" "}
-                    <span>(Bloco B)</span> são reformados e equipados com TV,
-                    telefone, frigobar, ventilador de teto e banheiro privativo.
+                    {config.inscricoes.apa == 1 && <span>(Esgotado) </span>}
+                    Os apartamentos da categoria A <span>(Bloco B)</span> são
+                    reformados e equipados com TV, telefone, frigobar,
+                    ventilador de teto e banheiro privativo.
                 </p>
 
                 <a
@@ -95,7 +93,8 @@ const Page = (props) => {
             </div>
 
             <h3>
-                Quartos <span> (Esgotado) </span>
+                Quartos{" "}
+                {config.inscricoes.quarto == 1 && <span>(Esgotado) </span>}
             </h3>
 
             <div className='texto cf'>
@@ -165,11 +164,23 @@ const Page = (props) => {
                 />
             </div>
 
-            <Sidebar item={item} />
+            <Sidebar item={itemMural} />
         </Main>
     );
 };
+export async function getServerSideProps(context) {
+    const res = await fetch(
+        "http://localhost:3000/api/mural?limite=1&aleatorio=sim"
+    );
+    const data = await res.json();
 
+    return {
+        props: { itemMural: data[0] },
+        revalidate: 60 * 5,
+    };
+}
+
+export default Page;
 const Main = styled.div`
     position: relative;
     color: ${({ theme }) => theme.colors.mainText};
@@ -227,4 +238,3 @@ const Main = styled.div`
         }
     }
 `;
-export default Page;

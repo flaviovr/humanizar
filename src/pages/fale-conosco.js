@@ -68,7 +68,7 @@ function enviaEmail(form) {
 
     emailjs.sendForm("service_zh3no8w", "template_3ljh249", form).then(
         (response) => {
-            console.log(response);
+            //console.log(response);
             alert("email enviado");
             document.querySelector(form).reset();
         },
@@ -77,7 +77,7 @@ function enviaEmail(form) {
             document.querySelector(form).message.value = document
                 .querySelector(form)
                 .message.value.replace("<br/>", "\n");
-            console.log(err);
+            //console.log(err);
         }
     );
 }

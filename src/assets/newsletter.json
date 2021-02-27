@@ -1,0 +1,652 @@
+{
+    "newsletter": [
+        {
+            "id": "1",
+            "email": "ritasesso@hotmail.com"
+        },
+        {
+            "id": "2",
+            "email": "vrest31@gmail.com"
+        },
+        {
+            "id": "3",
+            "email": "thecertini@terra.com.br"
+        },
+        {
+            "id": "4",
+            "email": "certini.marco@gmail.com"
+        },
+        {
+            "id": "5",
+            "email": "reginasilvarelu@hotmail.com"
+        },
+        {
+            "id": "6",
+            "email": "gurgelim@gmail.com"
+        },
+        {
+            "id": "7",
+            "email": "veiopai@gmail.com"
+        },
+        {
+            "id": "8",
+            "email": "reeginasilvarelu@hotmail.com"
+        },
+        {
+            "id": "9",
+            "email": "fvaleriana@gmail.com"
+        },
+        {
+            "id": "10",
+            "email": "gilmar.v.ribeiro@gmail.com"
+        },
+        {
+            "id": "77",
+            "email": "marcaolima@bol.com.br"
+        },
+        {
+            "id": "12",
+            "email": "Kssiasol@gmail.com"
+        },
+        {
+            "id": "13",
+            "email": "modesto.olveira.elias@gmail.com"
+        },
+        {
+            "id": "14",
+            "email": "reginabarbosa423@yahoo.com.br"
+        },
+        {
+            "id": "15",
+            "email": "claudiaterradesign@yahoo.com.br"
+        },
+        {
+            "id": "16",
+            "email": "Www.crisseraphini@yahoo.com.br"
+        },
+        {
+            "id": "17",
+            "email": "marilzafaria@globo.com"
+        },
+        {
+            "id": "18",
+            "email": "dududguerra@globo.com"
+        },
+        {
+            "id": "19",
+            "email": "m.faria970@gmail.com"
+        },
+        {
+            "id": "20",
+            "email": "celiarcavalcante@hotmail.com"
+        },
+        {
+            "id": "21",
+            "email": "gloria-leone@hotmail.com"
+        },
+        {
+            "id": "22",
+            "email": "reginasilvarelu@hotmail.com.br"
+        },
+        {
+            "id": "23",
+            "email": "pradivulgarsite@gmail.com"
+        },
+        {
+            "id": "24",
+            "email": "megacursos2016@gmail.com"
+        },
+        {
+            "id": "25",
+            "email": "info9908@bol.com.br"
+        },
+        {
+            "id": "26",
+            "email": "smartvideoa@bol.com.br"
+        },
+        {
+            "id": "27",
+            "email": "angelinamagalhaesc@gmail.com"
+        },
+        {
+            "id": "28",
+            "email": "divulgamaisbb@gmail.com"
+        },
+        {
+            "id": "29",
+            "email": "smartvideo20@gmail.com"
+        },
+        {
+            "id": "30",
+            "email": "contato@whatsappexpert.com.br"
+        },
+        {
+            "id": "31",
+            "email": "naoresponder@veloxip.com.br"
+        },
+        {
+            "id": "32",
+            "email": "campanha@publicidadegoogle.com.br"
+        },
+        {
+            "id": "33",
+            "email": "cursogomakers@bol.com.br"
+        },
+        {
+            "id": "34",
+            "email": "liviafaria81@yahoo.com.br"
+        },
+        {
+            "id": "35",
+            "email": "eduardo@portubrasil.com.br"
+        },
+        {
+            "id": "36",
+            "email": "mkt03@bhgrafica.com"
+        },
+        {
+            "id": "37",
+            "email": "atendimento@graficaboavista.com"
+        },
+        {
+            "id": "38",
+            "email": "segredo.da.vitoria.2016@gmail.com"
+        },
+        {
+            "id": "39",
+            "email": "patricia.silva923@yahoo.com.br"
+        },
+        {
+            "id": "40",
+            "email": "naoresponda@luauhost.com.br"
+        },
+        {
+            "id": "41",
+            "email": "wesley@eletrosystem.com"
+        },
+        {
+            "id": "42",
+            "email": "treinamento-ecommerce@bol.com.br"
+        },
+        {
+            "id": "43",
+            "email": "viniciussantos1970@outlook.com"
+        },
+        {
+            "id": "44",
+            "email": "gicelmapereira@gmail.com"
+        },
+        {
+            "id": "45",
+            "email": "contato@zanel.com.br"
+        },
+        {
+            "id": "46",
+            "email": "lojatemplates@gmail.com"
+        },
+        {
+            "id": "47",
+            "email": "contato@sitesbmx.com"
+        },
+        {
+            "id": "48",
+            "email": "help-chat@bol.com.br"
+        },
+        {
+            "id": "49",
+            "email": "guiacomerciodf@gmail.com"
+        },
+        {
+            "id": "50",
+            "email": "Publicidade@veloxip.com.br"
+        },
+        {
+            "id": "51",
+            "email": "digital10mais@gmail.com"
+        },
+        {
+            "id": "52",
+            "email": "seomarketing@uol.com.br"
+        },
+        {
+            "id": "53",
+            "email": "pagarmenossempre@gmail.com"
+        },
+        {
+            "id": "54",
+            "email": "sigma@sigmaconsultoria.com.br"
+        },
+        {
+            "id": "55",
+            "email": "contato@mwcreator.com.br"
+        },
+        {
+            "id": "56",
+            "email": "contato@smartvideo.com.br"
+        },
+        {
+            "id": "57",
+            "email": "empresariobrasileirodesucesso@gmail.com"
+        },
+        {
+            "id": "58",
+            "email": "omagnetico1@gmail.com"
+        },
+        {
+            "id": "59",
+            "email": "contato@parceriapositiva.com.br"
+        },
+        {
+            "id": "60",
+            "email": "campanha@hortifrutidoalemao.com.br"
+        },
+        {
+            "id": "61",
+            "email": "luiz@sitesbmx.com"
+        },
+        {
+            "id": "62",
+            "email": "divulgamaisnt@gmail.com"
+        },
+        {
+            "id": "63",
+            "email": "associadosnetvisionglobal@gmail.com"
+        },
+        {
+            "id": "64",
+            "email": "contatocontageral@gmail.com"
+        },
+        {
+            "id": "65",
+            "email": "comercial@sendflix.com.br"
+        },
+        {
+            "id": "66",
+            "email": "contato@maquinavendaon.com"
+        },
+        {
+            "id": "67",
+            "email": "thais.seomarketing@globo.com"
+        },
+        {
+            "id": "68",
+            "email": "contato@smartvideo.vai.la"
+        },
+        {
+            "id": "69",
+            "email": "campanha@a7publicidade.com.br"
+        },
+        {
+            "id": "70",
+            "email": "ofertaseguroauto@gmail.com"
+        },
+        {
+            "id": "71",
+            "email": "contanovas9090@gmail.com"
+        },
+        {
+            "id": "72",
+            "email": "vendacerta.net@gmail.com"
+        },
+        {
+            "id": "73",
+            "email": "quervendermais@bol.com.br"
+        },
+        {
+            "id": "74",
+            "email": "marketing@zanettigrafica.com.br"
+        },
+        {
+            "id": "75",
+            "email": "destaquecomercial@globo.com"
+        },
+        {
+            "id": "76",
+            "email": "envio@simplessolucao.com.br"
+        },
+        {
+            "id": "78",
+            "email": "atendimento@cartorioexpresso.com.br"
+        },
+        {
+            "id": "79",
+            "email": "mkt01@bhgrafica.com"
+        },
+        {
+            "id": "80",
+            "email": "publicidade@opequenonaweb.com.br"
+        },
+        {
+            "id": "81",
+            "email": "assistenciasmartfone@bol.com.br"
+        },
+        {
+            "id": "82",
+            "email": "publicidade@irqzero.net"
+        },
+        {
+            "id": "83",
+            "email": "macarqsp@gmail.com"
+        },
+        {
+            "id": "84",
+            "email": "contato@bigerp.com.br"
+        },
+        {
+            "id": "85",
+            "email": "marcia-ap60@bol.com.br"
+        },
+        {
+            "id": "86",
+            "email": "comercial1@projetoweb.com.br"
+        },
+        {
+            "id": "87",
+            "email": "portubrasil@bol.com.br"
+        },
+        {
+            "id": "88",
+            "email": "fernandacarlanetto@gmail.com"
+        },
+        {
+            "id": "89",
+            "email": "claritavr@gmail.com"
+        },
+        {
+            "id": "90",
+            "email": "mpaulax@gmail.com"
+        },
+        {
+            "id": "91",
+            "email": "carolinechiplivre1@gmail.com"
+        },
+        {
+            "id": "92",
+            "email": "trindadeigrejaslopes@yahoo.com.br"
+        },
+        {
+            "id": "93",
+            "email": "mkt@insitepublicidade.com"
+        },
+        {
+            "id": "94",
+            "email": "ninicebr@hotmail.com"
+        },
+        {
+            "id": "95",
+            "email": "newsletter@mdftecnologia.com.br"
+        },
+        {
+            "id": "96",
+            "email": "tiagoemada@gmail.com"
+        },
+        {
+            "id": "97",
+            "email": "marciatrios@hotmail.com"
+        },
+        {
+            "id": "98",
+            "email": "vbeltrao7@hotmail.com"
+        },
+        {
+            "id": "99",
+            "email": "trabalhoporconta2@gmail.com"
+        },
+        {
+            "id": "100",
+            "email": "jr@sitesbmx.com"
+        },
+        {
+            "id": "101",
+            "email": "contato@mcssistemaerp.com.br"
+        },
+        {
+            "id": "102",
+            "email": "queroavaliar@gmail.com"
+        },
+        {
+            "id": "103",
+            "email": "midia@sitesbmx.com"
+        },
+        {
+            "id": "104",
+            "email": "falecom@sitesbmx.com"
+        },
+        {
+            "id": "105",
+            "email": "nao-responder@gmail.com"
+        },
+        {
+            "id": "106",
+            "email": "epifaniacorrea@gmail.com"
+        },
+        {
+            "id": "107",
+            "email": "romeucatsantos@gmail.com"
+        },
+        {
+            "id": "108",
+            "email": "jivochat.vendas@gmail.com"
+        },
+        {
+            "id": "109",
+            "email": "carolina.consultoria@globo.com"
+        },
+        {
+            "id": "110",
+            "email": "insitepublicidade@gmail.com"
+        },
+        {
+            "id": "111",
+            "email": "iranjunior1980@gmail.com"
+        },
+        {
+            "id": "112",
+            "email": "julianacrborca@gmail.com"
+        },
+        {
+            "id": "113",
+            "email": "atendimento@hd3publicidade.com.br"
+        },
+        {
+            "id": "114",
+            "email": "arpedrosoojr5@gmail.com"
+        },
+        {
+            "id": "115",
+            "email": "contato@mjarcondicionado.com.br"
+        },
+        {
+            "id": "116",
+            "email": "brilhoarte@brilhoarte.com.br"
+        },
+        {
+            "id": "117",
+            "email": "bitcoinstask@gmail.com"
+        },
+        {
+            "id": "118",
+            "email": "suporte.backlinks@gmail.com"
+        },
+        {
+            "id": "119",
+            "email": "geraldor@gmail.com"
+        },
+        {
+            "id": "120",
+            "email": "geraldor90@gmail.com"
+        },
+        {
+            "id": "121",
+            "email": "topofmind@globo.com"
+        },
+        {
+            "id": "122",
+            "email": "naoresponder@lacroa.com"
+        },
+        {
+            "id": "123",
+            "email": "trabalhoporconta1@gmail.com"
+        },
+        {
+            "id": "124",
+            "email": "jenielson@gmail.com"
+        },
+        {
+            "id": "125",
+            "email": "larissa.seomarketing@globo.com"
+        },
+        {
+            "id": "126",
+            "email": "tatianne_monteiro@csn.com.br"
+        },
+        {
+            "id": "127",
+            "email": "novaelevabrasil@gmail.com"
+        },
+        {
+            "id": "128",
+            "email": "NAORESPONDER@insitepublicidade.com"
+        },
+        {
+            "id": "129",
+            "email": "contato@i9teste.com.br"
+        },
+        {
+            "id": "130",
+            "email": "atendimento@r2grafica.com.br"
+        },
+        {
+            "id": "131",
+            "email": "joaojosetu@gmail.com"
+        },
+        {
+            "id": "132",
+            "email": "fotografoale@gmail.com"
+        },
+        {
+            "id": "133",
+            "email": "fraude.topofmind@globo.com"
+        },
+        {
+            "id": "134",
+            "email": "bbrucardoso@gmail.com"
+        },
+        {
+            "id": "135",
+            "email": "sales@dwarikas.com"
+        },
+        {
+            "id": "136",
+            "email": "divulgamais@gmail.com"
+        },
+        {
+            "id": "137",
+            "email": "ersaguiar@hotmail.com"
+        },
+        {
+            "id": "138",
+            "email": "contato@mjmtecnodiesel.com.br"
+        },
+        {
+            "id": "139",
+            "email": "grupodemidiabrasil@gmail.com"
+        },
+        {
+            "id": "140",
+            "email": "contatocelular@zipmail.com.br"
+        },
+        {
+            "id": "141",
+            "email": "ferlupe_angra@hotmail.com"
+        },
+        {
+            "id": "142",
+            "email": "retorno@gmail.com"
+        },
+        {
+            "id": "143",
+            "email": "retorno2@gmail.com"
+        },
+        {
+            "id": "144",
+            "email": "contato.gestorseo2@gmail.com"
+        },
+        {
+            "id": "145",
+            "email": "tanialeao1990@gmail.com"
+        },
+        {
+            "id": "146",
+            "email": "reinaldobruno@yahoo.com.br"
+        },
+        {
+            "id": "147",
+            "email": "mariaineslopes@hotmail.com"
+        },
+        {
+            "id": "148",
+            "email": "tvolpex@gmail.com"
+        },
+        {
+            "id": "149",
+            "email": "mlfamaria@hotmail.com"
+        },
+        {
+            "id": "150",
+            "email": "Mellcris1@yahoo.com.br"
+        },
+        {
+            "id": "151",
+            "email": "lenita_lameira@hotmail.com"
+        },
+        {
+            "id": "152",
+            "email": "Nathymcarvalhocastro@gmail.com"
+        },
+        {
+            "id": "153",
+            "email": "Nathalyaeana@hotmail.com"
+        },
+        {
+            "id": "154",
+            "email": "Monalisalves@oi.com.br"
+        },
+        {
+            "id": "155",
+            "email": "neidezambroni@hotmail.com"
+        },
+        {
+            "id": "156",
+            "email": "marianet05@bol.com.br"
+        },
+        {
+            "id": "157",
+            "email": "sheilasouza00@hotmail.com"
+        },
+        {
+            "id": "158",
+            "email": "darcyverri@hotmail.com"
+        },
+        {
+            "id": "159",
+            "email": ""
+        },
+        {
+            "id": "160",
+            "email": "nivea.greice@hotmail.com"
+        },
+        {
+            "id": "161",
+            "email": "anabrasil45@gmail.com"
+        },
+        {
+            "id": "162",
+            "email": "biavpelegrineti@yahoo.com.br"
+        },
+        {
+            "id": "163",
+            "email": "rafaelsouza.pereira5@gmail.com"
+        }
+    ]
+}

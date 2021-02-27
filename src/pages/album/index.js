@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { galerias } from "../../assets/galerias.json";
 
 const Page = (props) => {
     const db = props.data;
 
-    const itemList = db.albuns.map((item) => {
+    const itemList = galerias.map((item) => {
         return (
             <Link href={"/album/" + item.ano} key={item.ano} passref>
                 <a>

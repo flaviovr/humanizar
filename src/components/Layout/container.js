@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Background = styled.div`
+const Container = styled.div`
     width: 960px;
     margin: 0 auto;
     height: 100vh;
@@ -13,4 +13,4 @@ const Background = styled.div`
     -ms-filter: "FlipH"; */
 `;
 
-export default Background;
+export default Container;

@@ -23,17 +23,17 @@ npm run dev
 -   ~~Recreat actual interface~~
 -   Recreate config logic
 -   Recreate missing functionality
-
     -   Implement newsEmail database saving
     -   Implement missing modals
     -   Implement Mural
-        -   Pagination
-        -   Modal
+        -   ~~Pagination~~
+        -   ~~Modal~~
+        -   Insert Comment
     -   Implement Contact
         -   Save in database
         -   ~~Implement mail sending~~
-
+-   Add actual database
+-   Change database to SQLite
+-   Refactor some code
 -   Improve CSS - Make it Responsible
 -   Add Config Dashboard
--   Add actual database
--   Change database schema

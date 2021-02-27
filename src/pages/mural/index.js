@@ -2,8 +2,7 @@ import styled from "styled-components";
 import Mural from "../../components/Mural";
 
 const Page = (props) => {
-    const db = props.data;
-
+    const { muraldata } = props;
     return (
         <Main>
             <h2>Mural de Recados</h2>
@@ -24,7 +23,7 @@ const Page = (props) => {
                 Deixe seu Recado
             </a>
             <hr />
-            <Mural data={db.mural} paginatePerPage='9' />
+            <Mural data={muraldata} perPage={9} paginate />
         </Main>
     );
 };
@@ -39,4 +38,14 @@ const Main = styled.div`
         width: 220px;
     }
 `;
+
+export async function getServerSideProps(context) {
+    const res = await fetch("http://localhost:3000/api/mural?limite=9");
+    const data = await res.json();
+
+    return {
+        props: { muraldata: data },
+        revalidate: 60 * 5,
+    };
+}
 export default Page;

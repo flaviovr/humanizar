@@ -2,10 +2,10 @@ import React, { useState, useRouter } from "react";
 import FsLightbox from "fslightbox-react";
 import styled from "styled-components";
 import Link from "next/link";
-import { albuns } from "../../../db.json";
+import { galerias } from "../../assets/galerias.json";
 
-const Page = (album) => {
-    const fotos = parseInt(album.fotos) + 1;
+const Page = (galeria) => {
+    const fotos = parseInt(galeria.fotos) + 1;
     const [openFotos, setOpenFotos] = useState({
         toggler: false,
         slide: 1,
@@ -14,7 +14,7 @@ const Page = (album) => {
     const fotoSource = [];
 
     for (let i = 1; i < fotos; i++) {
-        fotoSource.push(`/images/albuns/${album.ano}/${i}.jpg`);
+        fotoSource.push(`/images/albuns/${galeria.ano}/${i}.jpg`);
         fotoList.push(
             <a
                 key={i}
@@ -24,7 +24,7 @@ const Page = (album) => {
                         slide: i,
                     })
                 }>
-                <img src={`/images/albuns/${album.ano}/thumb/${i}.jpg`} />
+                <img src={`/images/albuns/${galeria.ano}/thumb/${i}.jpg`} />
             </a>
         );
     }
@@ -33,7 +33,7 @@ const Page = (album) => {
         <Main>
             <h2>Álbum de Recordações</h2>
             <h3>
-                {album.ano} - {album.nome}
+                {galeria.ano} - {galeria.nome}
             </h3>
             <div className='lista'>{fotoList}</div>
             <FsLightbox
@@ -87,9 +87,9 @@ const Main = styled.div`
 
 export async function getStaticProps(context) {
     const { ano } = context.params;
-    const id = albuns.findIndex((album) => album.ano == ano);
+    const id = galerias.findIndex((galeria) => galeria.ano == ano);
     return {
-        props: { ...albuns[id] }, // will be passed to the page component as props
+        props: { ...galerias[id] }, // will be passed to the page component as props
     };
 }
 export async function getStaticPaths() {

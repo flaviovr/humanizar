@@ -37,26 +37,7 @@ const Page = (props) => {
                 {itensFancybox}
                 <FsLightbox
                     toggler={openFancybox.toggler}
-                    sources={[
-                        "/images/local/Marista01.jpg",
-                        "/images/local/Marista02.jpg",
-                        "/images/local/Marista03.jpg",
-                        "/images/local/Marista04.jpg",
-                        "/images/local/Marista05.jpg",
-                        "/images/local/Marista06.jpg",
-                        "/images/local/Marista07.jpg",
-                        "/images/local/Marista08.jpg",
-                        "/images/local/Marista09.jpg",
-                        "/images/local/Marista10.jpg",
-                        "/images/local/Marista11.jpg",
-                        "/images/local/Marista12.jpg",
-                        "/images/local/Marista13.jpg",
-                        "/images/local/Marista14.jpg",
-                        "/images/local/Marista15.jpg",
-                        "/images/local/Marista16.jpg",
-                        "/images/local/Marista17.jpg",
-                        "/images/local/Marista18.jpg",
-                    ]}
+                    sources={sourcesFancybox}
                     slide={openFancybox.slide}
                 />
             </div>

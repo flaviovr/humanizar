@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Sidebar = (props) => {
     const { item } = props;
+
     return (
         <SidebarContainer>
             <img
@@ -18,14 +19,33 @@ const Sidebar = (props) => {
             <hr />
 
             <MuralItem className='fbMural' rel='recado'>
-                <p className='data'>{item.data}</p>
-                <p className='desc'>{item.desc}</p>
-                <p className='autor'>{item.autor}</p>
+                <p className='data'>{formataData(item.data)}</p>
+                <p className='desc'>{item.recado}</p>
+                <p className='autor'>{item.nome}</p>
             </MuralItem>
         </SidebarContainer>
     );
 };
-
+const formataData = (d) => {
+    const data = new Date(d);
+    const meses = [
+        "Janeiro",
+        "Fevereiro",
+        "Março",
+        "Abril",
+        "Maio",
+        "Junho",
+        "Julh",
+        "Agosto",
+        "Setembro",
+        "Outubro",
+        "Novembro",
+        "Dezembro",
+    ];
+    const dia =
+        data.getDate() < 10 ? "0" + data.getDate() + 1 : data.getDate() + 1;
+    return dia + " de " + meses[data.getMonth()] + " de " + data.getFullYear();
+};
 const SidebarContainer = styled.div`
     position: absolute;
     top: 0px;
@@ -61,7 +81,7 @@ const MuralItem = styled.a`
     padding: 15px;
     margin: 10px;
     float: left;
-    overflow: hidden;
+
     border-radius: ${({ theme }) => theme.borderRadius};
     margin-top: 20px;
     .data {
@@ -71,8 +91,6 @@ const MuralItem = styled.a`
         color: ${({ theme }) => theme.colors.primary};
         font-size: 15px;
         margin: 10px 0px;
-        max-height: 270px;
-        overflow: hidden;
     }
     .autor {
         font-size: 14px;

@@ -5,7 +5,8 @@ import Modal from "../components/ModalWindow";
 import Link from "next/link";
 
 const Page = (props) => {
-    const db = props.data;
+    const { latestMural } = props;
+    console.log(latestMural);
 
     return (
         <Main>
@@ -22,11 +23,19 @@ const Page = (props) => {
                     <a>ver todos recados</a>
                 </Link>
             </Frase>
-            <MuralHome data={db.mural} />
+            <MuralHome data={latestMural} perPage={9} />
         </Main>
     );
 };
+export async function getServerSideProps(context) {
+    const res = await fetch("http://localhost:3000/api/mural?limite=9");
+    const data = await res.json();
 
+    return {
+        props: { latestMural: data },
+        revalidate: 60 * 5,
+    };
+}
 const Main = styled.div`
     font-size: 50px;
     color: ${({ theme }) => theme.colors.mainText};
