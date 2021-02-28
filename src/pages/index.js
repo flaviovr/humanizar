@@ -4,9 +4,12 @@ import MuralHome from "../components/Mural";
 import Modal from "../components/ModalWindow";
 import Link from "next/link";
 
+import sqlite3 from "sqlite3";
+import { open } from "sqlite";
+
 const Page = (props) => {
     const { latestMural } = props;
-    console.log(latestMural);
+    console.log(props);
 
     return (
         <Main>
@@ -27,15 +30,20 @@ const Page = (props) => {
         </Main>
     );
 };
-export async function getServerSideProps(context) {
-    const res = await fetch("http://localhost:3000/api/mural?limite=9");
-    const data = await res.json();
-
+export async function getStaticProps(context) {
+    const db = await open({
+        filename: "./src/assets/data.db",
+        driver: sqlite3.Database,
+    });
+    const data = await db.all(
+        `select id, nome, recado, data  from mural where ativo=1 order by id desc limit 9`
+    );
     return {
         props: { latestMural: data },
         revalidate: 60 * 5,
     };
 }
+
 const Main = styled.div`
     font-size: 50px;
     color: ${({ theme }) => theme.colors.mainText};

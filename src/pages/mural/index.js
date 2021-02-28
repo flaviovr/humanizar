@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import Mural from "../../components/Mural";
 
+import sqlite3 from "sqlite3";
+import { open } from "sqlite";
+
 const Page = (props) => {
-    const { muraldata } = props;
+    const { itensMural } = props;
     return (
         <Main>
             <h2>Mural de Recados</h2>
@@ -23,7 +26,7 @@ const Page = (props) => {
                 Deixe seu Recado
             </a>
             <hr />
-            <Mural data={muraldata} perPage={9} paginate />
+            <Mural data={itensMural} perPage={9} paginate />
         </Main>
     );
 };
@@ -39,13 +42,17 @@ const Main = styled.div`
     }
 `;
 
-export async function getServerSideProps(context) {
-    const res = await fetch("http://localhost:3000/api/mural?limite=9");
-    const data = await res.json();
-
+export async function getStaticProps(context) {
+    const db = await open({
+        filename: "./src/assets/data.db",
+        driver: sqlite3.Database,
+    });
+    const data = await db.all(
+        `select id, nome, recado, data from mural where ativo=1 order by id desc`
+    );
     return {
-        props: { muraldata: data },
-        revalidate: 60 * 5,
+        props: { itensMural: data },
+        revalidate: 60 * 60,
     };
 }
 export default Page;

@@ -3,6 +3,9 @@ import FsLightbox from "fslightbox-react";
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar";
 
+import sqlite3 from "sqlite3";
+import { open } from "sqlite";
+
 const Page = (props) => {
     const { config, itemMural } = props;
 
@@ -38,7 +41,7 @@ const Page = (props) => {
                     Os apartamentos são classificados em 3 categorias: A, B e C.
                 </p>
                 <p>
-                    {config.inscricoes.apc == 1 && <span>(Esgotado) </span>}Os
+                    {config.inscricoes.apc == 1 && <span>Esgotado </span>}Os
                     apartamentos de categoria C <span>(Cenáculo)</span> têm
                     telefone, ventilador de teto e banheiro privativo. Dispõem
                     de uma sala de TV e um frigobar de uso comunitário. Eles têm
@@ -46,13 +49,13 @@ const Page = (props) => {
                     Natureza, por estarem localizados na parte mais alta.
                 </p>
                 <p>
-                    {config.inscricoes.apb == 1 && <span>(Esgotado) </span>}Os
-                    apartamentos da categoria B <span>(Bloco A)</span> têm TV,
+                    {config.inscricoes.apb == 1 && <span>Esgotado </span>}Os
+                    apartamentos da categoria B <span>Bloco A</span> têm TV,
                     ventilador de teto, telefone, frigobar e banheiro privativo.
                 </p>
                 <p>
-                    {config.inscricoes.apa == 1 && <span>(Esgotado) </span>}
-                    Os apartamentos da categoria A <span>(Bloco B)</span> são
+                    {config.inscricoes.apa == 1 && <span>Esgotado </span>}
+                    Os apartamentos da categoria A <span>\(Bloco B\)</span> são
                     reformados e equipados com TV, telefone, frigobar,
                     ventilador de teto e banheiro privativo.
                 </p>
@@ -94,7 +97,7 @@ const Page = (props) => {
 
             <h3>
                 Quartos{" "}
-                {config.inscricoes.quarto == 1 && <span>(Esgotado) </span>}
+                {config.inscricoes.quarto == 1 && <span>Esgotado </span>}
             </h3>
 
             <div className='texto cf'>
@@ -168,19 +171,22 @@ const Page = (props) => {
         </Main>
     );
 };
-export async function getServerSideProps(context) {
-    const res = await fetch(
-        "http://localhost:3000/api/mural?limite=1&aleatorio=sim"
+export async function getStaticProps(context) {
+    const db = await open({
+        filename: "./src/assets/data.db",
+        driver: sqlite3.Database,
+    });
+    const data = await db.get(
+        `select id, nome, recado, data from mural where ativo=1 order by random()  limit 1`
     );
-    const data = await res.json();
-
     return {
-        props: { itemMural: data[0] },
+        props: { itemMural: data },
         revalidate: 60 * 5,
     };
 }
 
 export default Page;
+
 const Main = styled.div`
     position: relative;
     color: ${({ theme }) => theme.colors.mainText};

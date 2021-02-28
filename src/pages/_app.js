@@ -19,9 +19,10 @@ config.inscricoes.total =
     config.inscricoes.apc +
     config.inscricoes.quarto;
 
-let dat = new Date(...config.inscricoes.dataInscricao);
-let today = new Date();
-config.inscricoes.isOpen = today >= dat;
+const dataInscricao = new Date(...config.inscricoes.dataInscricao);
+const today = new Date();
+
+config.inscricoes.isOpen = today >= dataInscricao;
 
 const theme = config.theme;
 
@@ -64,7 +65,7 @@ function MyApp({ Component, pageProps }) {
             <ThemeProvider theme={theme}>
                 <GlobalStyle />
                 <Container>
-                    <TopBar {...pageProps} isHome={isHome} config={config} />
+                    <TopBar isHome={isHome} config={config} />
                     <Component {...pageProps} isHome={isHome} config={config} />
 
                     <Rodape>

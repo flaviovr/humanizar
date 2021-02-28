@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar";
 
+import sqlite3 from "sqlite3";
+import { open } from "sqlite";
+
 const Page = (props) => {
     const { config, itemMural } = props;
 
@@ -24,14 +27,16 @@ const Page = (props) => {
         </Main>
     );
 };
-export async function getServerSideProps(context) {
-    const res = await fetch(
-        "http://localhost:3000/api/mural?limite=1&aleatorio=sim"
+export async function getStaticProps(context) {
+    const db = await open({
+        filename: "./src/assets/data.db",
+        driver: sqlite3.Database,
+    });
+    const data = await db.get(
+        `select id, nome, recado, data from mural where ativo=1 order by random()  limit 1`
     );
-    const data = await res.json();
-
     return {
-        props: { itemMural: data[0] },
+        props: { itemMural: data },
         revalidate: 60 * 5,
     };
 }
