@@ -7,12 +7,12 @@ import App from "next/app";
 import GlobalStyle from "../assets/global.style";
 import { ThemeProvider } from "styled-components";
 
-import Container from "../components/Layout/Container";
+import Container from "../components/Layout/container.js";
 import TopBar from "../components/TopBar";
-import Rodape, { validateEmail } from "../components/Layout/Rodape";
+import Rodape, { validateEmail } from "../components/Layout/rodape.js";
 import config from "../assets/config.json";
 
-// Calculate config
+// Calculate confignpm run
 config.inscricoes.total =
     config.inscricoes.apa +
     config.inscricoes.apb +
