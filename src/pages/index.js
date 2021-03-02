@@ -4,12 +4,11 @@ import MuralHome from "../components/Mural";
 import Modal from "../components/ModalWindow";
 import Link from "next/link";
 
-import sqlite3 from "sqlite3";
-import { open } from "sqlite";
+import db from "../assets/db";
 
-const Page = (props) => {
+function Page(props) {
     const { latestMural } = props;
-    console.log(props);
+    //console.log(props);
 
     return (
         <Main>
@@ -29,15 +28,15 @@ const Page = (props) => {
             <MuralHome data={latestMural} perPage={9} />
         </Main>
     );
-};
+}
 export async function getStaticProps(context) {
-    const db = await open({
-        filename: "./src/assets/data.db",
-        driver: sqlite3.Database,
-    });
-    const data = await db.all(
-        `select id, nome, recado, data  from mural where ativo=1 order by id desc limit 9`
+    let query = await db.query(
+        "select id, nome, recado, data  from mural where ativo=1 order by id desc limit 9"
     );
+    const data = JSON.parse(JSON.stringify(query));
+
+    await db.end();
+
     return {
         props: { latestMural: data },
         revalidate: 60 * 5,

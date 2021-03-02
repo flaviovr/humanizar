@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import Mural from "../../components/Mural";
 
-import sqlite3 from "sqlite3";
-import { open } from "sqlite";
+import db from "../../assets/db";
 
 const Page = (props) => {
     const { itensMural } = props;
@@ -43,13 +42,13 @@ const Main = styled.div`
 `;
 
 export async function getStaticProps(context) {
-    const db = await open({
-        filename: "./src/assets/data.db",
-        driver: sqlite3.Database,
-    });
-    const data = await db.all(
-        `select id, nome, recado, data from mural where ativo=1 order by id desc`
+    let query = await db.query(
+        "select id, nome, recado, data  from mural where ativo=1 order by id desc"
     );
+    const data = JSON.parse(JSON.stringify(query));
+
+    await db.end();
+
     return {
         props: { itensMural: data },
         revalidate: 60 * 60,

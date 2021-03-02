@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar";
 
-import sqlite3 from "sqlite3";
-import { open } from "sqlite";
+import db from "../assets/db";
 
 const Page = (props) => {
     const { config, itemMural } = props;
@@ -23,15 +22,14 @@ const Page = (props) => {
     );
 };
 export async function getStaticProps(context) {
-    const db = await open({
-        filename: "./src/assets/data.db",
-        driver: sqlite3.Database,
-    });
-    const data = await db.get(
-        `select id, nome, recado, data from mural where ativo=1 order by random()  limit 1`
+    let query = await db.query(
+        "select id, nome, recado, data  from mural where ativo=1 order by rand() limit 1"
     );
+    const data = JSON.parse(JSON.stringify(query));
+
+    await db.end();
     return {
-        props: { itemMural: data },
+        props: { itemMural: data[0] },
         revalidate: 60 * 5,
     };
 }

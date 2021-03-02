@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import Link from "next/link";
-import { galerias } from "../../assets/galerias.json";
+import db from "../../assets/db";
 
 const Page = (props) => {
-    const db = props.data;
+    const { galerias } = props;
 
     const itemList = galerias.map((item) => {
         return (
@@ -33,6 +33,17 @@ const Page = (props) => {
         </Main>
     );
 };
+export async function getStaticProps(context) {
+    let query = await db.query("select * from galerias order by ano desc");
+    const data = JSON.parse(JSON.stringify(query));
+
+    await db.end();
+
+    return {
+        props: { galerias: data },
+        revalidate: 60 * 60 * 24 * 365, // um ano
+    };
+}
 
 const Main = styled.div`
     font-size: 50px;
