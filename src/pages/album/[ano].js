@@ -1,8 +1,9 @@
-import React, { useState, useRouter } from "react";
+import React, { useState } from "react";
 import FsLightbox from "fslightbox-react";
 import styled from "styled-components";
 import Link from "next/link";
-import { galerias } from "../../assets/galerias.json";
+
+import db from "../../assets/db";
 
 const Page = (galeria) => {
     const fotos = parseInt(galeria.fotos) + 1;
@@ -86,10 +87,15 @@ const Main = styled.div`
 // }
 
 export async function getStaticProps(context) {
-    const { ano } = context.params;
-    const id = galerias.findIndex((galeria) => galeria.ano == ano);
+    const { ano } = context.params.ano;
+    let query = await db.query(
+        `select * from galerias where ano=${db.escape(ano)}`
+    );
+    const galeria = JSON.parse(JSON.stringify(query));
+    await db.end();
+
     return {
-        props: { ...galerias[id] }, // will be passed to the page component as props
+        props: { ...galeria[0] }, // will be passed to the page component as props
     };
 }
 export async function getStaticPaths() {
