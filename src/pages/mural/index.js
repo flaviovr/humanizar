@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import Mural from "../../components/Mural";
+import React, { useState } from "react";
 
 import db from "../../assets/db";
 
 const Page = (props) => {
     const { itensMural } = props;
+
     return (
         <Main>
             <h2>Mural de Recados</h2>
@@ -18,12 +20,7 @@ const Page = (props) => {
                     importante pra você!
                 </p>
             </div>
-            <a
-                href='_enviarRecado.php'
-                className='btn fbMural'
-                onClick={(e) => e.preventDefault()}>
-                Deixe seu Recado
-            </a>
+            <a className='btn fbMural'>Deixe seu Recado</a>
             <hr />
             <Mural data={itensMural} perPage={9} paginate />
         </Main>

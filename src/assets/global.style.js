@@ -97,10 +97,9 @@ const GlobalStyle = createGlobalStyle`
         background: rgba(255, 255, 255, 0.9)!important;
     }
     .fslightbox-source-inner {
-        background: #fff;
-        padding: 10px;
-        box-shadow: 0px 0px 70px 20px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 0px 70px 20px rgba(0, 0, 0, 0.3);      
     }
+ 
     .fslightbox-flex-centered span{
         color:${theme.colors.secondaryLight}!important;
     }
@@ -130,10 +129,8 @@ const GlobalStyle = createGlobalStyle`
         background: ${theme.colors.secondary}!important;
         border-radius:50%;
     }
-    .fslightbox-source{
-        height:auto!important;
-       
-    }
+    
+    
 `;
 
 export default GlobalStyle;

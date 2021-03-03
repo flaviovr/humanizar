@@ -21,19 +21,19 @@ npm run dev
 -   ~~Create prototype Json data~~
 -   ~~Move all actual database driven config to json~~
 -   ~~Recreat actual interface~~
+-   ~~Add actual database~~
 -   Recreate config logic
 -   Recreate missing functionality
     -   Implement newsEmail database saving
-    -   Implement missing modals
+    -   Implement missing modals ( PreHome & )
     -   Implement Mural
+        -   Insert Comment Modal (logic)
         -   ~~Pagination~~
         -   ~~Modal~~
-        -   Insert Comment
     -   Implement Contact
         -   Save in database
         -   ~~Implement mail sending~~
--   Add actual database
--   Change database to SQLite
+-   Change database to SQLite ????
 -   Refactor some code
 -   Improve CSS - Make it Responsible
 -   Add Config Dashboard

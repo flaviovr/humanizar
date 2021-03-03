@@ -1,18 +1,20 @@
 import styled from "styled-components";
 import Palestrantes from "../components/Palestrantes";
 import MuralHome from "../components/Mural";
-import Modal from "../components/ModalWindow";
+import PreHome from "../components/PreHome";
+
 import Link from "next/link";
+import React, { useState } from "react";
+import FsLightbox from "fslightbox-react";
 
 import db from "../assets/db";
 
 function Page(props) {
     const { latestMural } = props;
     //console.log(props);
-
+    const [openModal, setOpenModal] = useState(false);
     return (
         <Main>
-            <Modal />
             <Palestrantes /> <hr />
             <Frase>
                 "Humanizar é resgatar em nós o abraço, a amizade, o perdão."
@@ -26,6 +28,12 @@ function Page(props) {
                 </Link>
             </Frase>
             <MuralHome data={latestMural} perPage={9} />
+            <FsLightbox
+                toggler={openModal}
+                sources={[PreHome]}
+                slide={1}
+                openOnMount
+            />
         </Main>
     );
 }
@@ -42,7 +50,6 @@ export async function getStaticProps(context) {
         revalidate: 60 * 5,
     };
 }
-
 const Main = styled.div`
     font-size: 50px;
     color: ${({ theme }) => theme.colors.mainText};
