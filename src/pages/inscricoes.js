@@ -9,13 +9,17 @@ import Link from "next/link";
 
 const Page = (props) => {
     const { config, itemMural } = props;
-    const [openModal, setOpenModal] = useState(false);
 
-    const sourceFancybox = [];
+    const [openModal, setOpenModal] = useState(false);
+    const [openFotos, setOpenFotos] = useState({
+        toggler: false,
+        sources: [""],
+    });
+
     const sourceModal = config.inscricoes.isOpen ? (
         config.inscricoes.total == 4 ? (
             <div>
-                <h3 class='data modal'>
+                <h3 className='data modal'>
                     Vagas Esgotadas
                     <br />
                     Esperamos você na próxima edição.
@@ -23,7 +27,7 @@ const Page = (props) => {
             </div>
         ) : (
             <div>
-                <h3 class='data modal'>
+                <h3 className='data modal'>
                     Inscrições Abertas
                     <br />
                     Vagas Limitadas.
@@ -32,7 +36,7 @@ const Page = (props) => {
         )
     ) : (
         <div>
-            <h3 class='data modal'>
+            <h3 className='data modal'>
                 Inscrições a partir de <br />8 de Dezembro de 2019 às 8h.
             </h3>
         </div>
@@ -127,16 +131,19 @@ const Page = (props) => {
                     <p className='valor'>R$ 525,00</p>
                     <a
                         title='Quarto'
-                        href='/acomodacoes'
-                        rel='q'
-                        className='ver btn rnd fb'>
+                        className='ver btn rnd fb'
+                        onClick={(e) => {
+                            setOpenFotos({
+                                toggler: !openFotos.toggler,
+                                sources: [
+                                    "/images/local/quarto01g.jpg",
+                                    "/images/local/quarto02g.jpg",
+                                ],
+                            });
+                        }}>
                         Veja a Foto
                     </a>
-                    <a
-                        title='Quarto'
-                        href='/acomodacoes'
-                        rel='q'
-                        className='fb'></a>
+
                     {config.inscricoes.quarto == 1 && (
                         <span>Vagas Esgotadas</span>
                     )}
@@ -147,8 +154,13 @@ const Page = (props) => {
                     <p className='valor'>R$ 678,00</p>
                     <a
                         title='Apartamento C'
-                        href='/acomodacoes'
-                        className='ver btn rnd fb'>
+                        className='ver btn rnd fb'
+                        onClick={(e) => {
+                            setOpenFotos({
+                                toggler: !openFotos.toggler,
+                                sources: ["/images/local/ap3g.jpg"],
+                            });
+                        }}>
                         Veja a Foto
                     </a>
                     {config.inscricoes.apc == 1 && <span>Vagas Esgotadas</span>}
@@ -159,8 +171,14 @@ const Page = (props) => {
                     <p className='valor'>R$ 760,00</p>
                     <a
                         title='Apartamento B'
-                        href='/acomodacoes'
-                        className='ver btn rnd fb'>
+                        className='ver btn rnd fb'
+                        onClick={(e) => {
+                            e.preventDefault();
+                            setOpenFotos({
+                                toggler: !openFotos.toggler,
+                                sources: ["/images/local/ap2g.jpg"],
+                            });
+                        }}>
                         Veja a Foto
                     </a>
                     {config.inscricoes.apb == 1 && <span>Vagas Esgotadas</span>}
@@ -171,8 +189,14 @@ const Page = (props) => {
                     <p className='valor'>R$ 885,00</p>
                     <a
                         title='Apartamento A'
-                        href='/acomodacoes'
-                        className='ver btn rnd fb'>
+                        className='ver btn rnd fb'
+                        onClick={(e) => {
+                            e.preventDefault();
+                            setOpenFotos({
+                                toggler: !openFotos.toggler,
+                                sources: ["/images/local/ap1g.jpg"],
+                            });
+                        }}>
                         Veja a Foto
                     </a>
                     {config.inscricoes.apa == 1 && <span>Vagas Esgotadas</span>}
@@ -239,6 +263,12 @@ const Page = (props) => {
                     e-mail, na confirmação da inscrição.
                 </p>
             </div>
+            <FsLightbox
+                toggler={openFotos.toggler}
+                sources={openFotos.sources}
+                slide={1}
+                disableLocalStorage={true}
+            />
             <FsLightbox toggler={openModal} sources={[sourceModal]} slide={1} />
             {config.inscricoes.isOpen && config.inscricoes.total < 4 ? (
                 <Link href='/ficha-inscricao'>
@@ -271,6 +301,7 @@ export async function getStaticProps(context) {
         revalidate: 60 * 5,
     };
 }
+
 const Main = styled.div`
     position: relative;
     color: ${({ theme }) => theme.colors.mainText};

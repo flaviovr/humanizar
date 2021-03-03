@@ -50,7 +50,8 @@ const GlobalStyle = createGlobalStyle`
        margin:0;padding:0;
       
     }
-    a img {border:none;}
+    img{vertical-align:bottom;}
+    a img {border:none; }
     a, a:hover {text-decoration:none;color: ${theme.colors.primary};}
     a:hover { color: ${theme.colors.primaryDark};}
     hr { background: url(/images/page/hr.png) 0px -1px no-repeat; border: none; margin: 10px; height: 5px; display: block; clear: both; }
