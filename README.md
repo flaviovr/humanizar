@@ -25,15 +25,18 @@ npm run dev
 -   [x] ~~Add actual database~~
 -   [x] ~~Recreate config logic~~
 -   [ ] Recreate missing functionality
-    -   [ ] Implement newsEmail database saving
-    -   [x] ~~Implement missing modals~~
+
     -   [x] Implement Mural
-        -   [x] Insert Comment Modal (logic)
+        -   [ ] Insert Comment Modal (logic)
         -   [x] ~~Pagination~~
         -   [x] ~~Modal~~
+    -   [x] ~~Implement newsEmail database saving~~
+    -   [x] ~~Implement missing modals~~
+
     -   [x] ~~Implement Contact~~
         -   [x] ~~Save in database~~
         -   [x] ~~Implement mail sending~~
+
 -   [ ] Refactor some code => 75%
 -   [ ] Improve CSS - Make it Responsible
 -   [ ] Add Config Dashboard
