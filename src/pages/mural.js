@@ -1,12 +1,13 @@
 import styled from "styled-components";
-import Mural from "../../components/Mural";
+import Mural from "../components/Mural";
 import React, { useState } from "react";
-
-import db from "../../assets/db";
+import ModalForm from "../components/Layout/modal-form";
+import FsLightbox from "fslightbox-react";
+import db from "../assets/db";
 
 const Page = (props) => {
     const { itensMural } = props;
-
+    const [openSendForm, setOpenSendForm] = useState(false);
     return (
         <Main>
             <h2>Mural de Recados</h2>
@@ -20,9 +21,18 @@ const Page = (props) => {
                     importante pra você!
                 </p>
             </div>
-            <a className='btn fbMural'>Deixe seu Recado</a>
+            <a
+                className='btn fbMural'
+                onClick={() => setOpenSendForm(!openSendForm)}>
+                Deixe seu Recado
+            </a>
             <hr />
             <Mural data={itensMural} perPage={9} paginate />
+            <FsLightbox
+                toggler={openSendForm}
+                sources={[ModalForm]}
+                slide={1}
+            />
         </Main>
     );
 };

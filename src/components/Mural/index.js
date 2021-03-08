@@ -176,6 +176,7 @@ const MuralItem = styled.a`
     left: 0px;
     top: 0px;
     display: block;
+    cursor: pointer;
     background: #fff;
     position: relative;
     width: 300px;
