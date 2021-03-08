@@ -6,6 +6,7 @@ import Link from "next/link";
 import db from "../../assets/db";
 
 const Page = (galeria) => {
+    //console.log(galeria);
     const fotos = parseInt(galeria.fotos) + 1;
     const [openFotos, setOpenFotos] = useState({
         toggler: false,
@@ -87,15 +88,16 @@ const Main = styled.div`
 // }
 
 export async function getStaticProps(context) {
-    const { ano } = context.params.ano;
+    const { ano } = context.params;
+
     let query = await db.query(
         `select * from galerias where ano=${db.escape(ano)}`
     );
-    const galeria = JSON.parse(JSON.stringify(query));
+    const galeria = JSON.parse(JSON.stringify(query)).pop();
     await db.end();
 
     return {
-        props: { ...galeria[0] }, // will be passed to the page component as props
+        props: { ...galeria }, // will be passed to the page component as props
     };
 }
 export async function getStaticPaths() {

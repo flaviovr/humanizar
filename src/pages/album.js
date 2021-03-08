@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
-import db from "../../assets/db";
+import db from "../assets/db";
 
 const Page = (props) => {
     const { galerias } = props;
