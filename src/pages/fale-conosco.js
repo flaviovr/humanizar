@@ -1,8 +1,14 @@
 import styled from "styled-components";
 import emailjs from "emailjs-com";
+import { useForm } from "react-hook-form";
 
 const Page = (props) => {
-    const db = props.data;
+    const { register, handleSubmit, formState } = useForm();
+
+    const onSubmit = async (data) => {
+        await salvaContato(data);
+        enviaEmail(data);
+    };
 
     return (
         <Main>
@@ -10,27 +16,32 @@ const Page = (props) => {
             <form
                 name='formContato'
                 id='formContato'
-                onSubmit={(e) => validaContato(e)}>
+                onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor='nome'>Nome:</label>
                 <input
-                    type='text'
                     name='name'
-                    id='name'
+                    ref={register({ required: "Campo obrigatório" })}
                     className='campo rnd placeholder'
                     placeholder='Digite seu nome...'
                 />
+
                 <label htmlFor='email'>E-mail:</label>
                 <input
-                    type='text'
                     name='email'
-                    id='email'
+                    ref={register({
+                        pattern: {
+                            value: /^[a-z0-9.]+@[a-z0-9]+.[a-z]+.([a-z]+)?$/i,
+                            message: "Email inválido",
+                        },
+                    })}
                     className='campo rnd placeholder'
                     placeholder='Digite seu e-mail...'
                 />
+
                 <label htmlFor='recado'>Mensagem:</label>
                 <textarea
                     name='message'
-                    id='message'
+                    ref={register({ required: "Campo obrigatório" })}
                     className='campo rnd recado placeholder'
                     placeholder='Digite sua mensagem...'></textarea>
 
@@ -39,7 +50,6 @@ const Page = (props) => {
                     value='Enviar'
                     className='btn rnd enviar'
                 />
-                <input type='hidden' name='inserir' value='true' />
             </form>
 
             <div id='box' className='rnd'>
@@ -60,48 +70,34 @@ const Page = (props) => {
         </Main>
     );
 };
-function enviaEmail(form) {
-    emailjs.init("user_4GtVZ3aXk46211YL86vvw");
-    document.querySelector(form).message.value = document
-        .querySelector(form)
-        .message.value.replace(/(?:\r\n|\r|\n)/g, "<br/>");
 
-    emailjs.sendForm("service_zh3no8w", "template_3ljh249", form).then(
+async function salvaContato(data) {
+    try {
+        const res = await fetch("http://localhost:3000/api/contato", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+function enviaEmail(data) {
+    emailjs.init("user_4GtVZ3aXk46211YL86vvw");
+    data.message = data.message.replace(/(?:\r\n|\r|\n)/g, "<br/>");
+
+    emailjs.send("service_zh3no8w", "template_3ljh249", data).then(
         (response) => {
-            //console.log(response);
-            alert("email enviado");
-            document.querySelector(form).reset();
+            console.log(response);
+
+            alert("Recado enviado com sucesso");
+            //document.querySelector("form").reset();
         },
-        (err) => {
+        (error) => {
             alert("erro ao enviar email");
-            document.querySelector(form).message.value = document
-                .querySelector(form)
-                .message.value.replace("<br/>", "\n");
-            //console.log(err);
         }
     );
-}
-function validaEmail(email) {
-    return email.match(
-        "^([0-9,a-z,A-Z]+)([.,_,-]([0-9,a-z,A-Z]+))*[@]([0-9,a-z,A-Z]+)([.,_,-]([0-9,a-z,A-Z]+))*[.]([0-9,a-z,A-Z]){2}([0-9,a-z,A-Z])?$"
-    )
-        ? true
-        : false;
-}
-function validaContato(e) {
-    e.preventDefault();
-    if (document.formContato.name.value == "") {
-        alert("Digite seu nome.");
-        document.formContato.name.focus();
-    } else if (!validaEmail(document.formContato.email.value)) {
-        alert("E-mail Inválido.");
-        document.formContato.email.focus();
-    } else if (document.formContato.message.value == "") {
-        alert("Digite seu Recado.");
-        document.formContato.message.focus();
-    } else {
-        enviaEmail("#formContato");
-    }
 }
 
 const Main = styled.div`
