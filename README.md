@@ -18,21 +18,22 @@ npm run dev
 
 ## To-dos`s
 
--   ~~Create prototype Json data~~
--   ~~Move all actual database driven config to json~~
--   ~~Recreat actual interface~~
--   ~~Add actual database~~
--   ~~Recreate config logic~~
--   Recreate missing functionality
-    -   Implement newsEmail database saving
-    -   ~~Implement missing modals~~
-    -   Implement Mural
-        -   Insert Comment Modal (logic)
-        -   ~~Pagination~~
-        -   ~~Modal~~
-    -   ~~Implement Contact~~
-        -   ~~Save in database~~
-        -   ~~Implement mail sending~~
--   Refactor some code
--   Improve CSS - Make it Responsible
--   Add Config Dashboard
+-   [x] ~~Create prototype Json data~~
+
+-   [x] ~~Move all actual database driven config to json~~
+-   [x] ~~Recreat actual interface~~
+-   [x] ~~Add actual database~~
+-   [x] ~~Recreate config logic~~
+-   [ ] Recreate missing functionality
+    -   [ ] Implement newsEmail database saving
+    -   [x] ~~Implement missing modals~~
+    -   [x] Implement Mural
+        -   [x] Insert Comment Modal (logic)
+        -   [x] ~~Pagination~~
+        -   [x] ~~Modal~~
+    -   [x] ~~Implement Contact~~
+        -   [x] ~~Save in database~~
+        -   [x] ~~Implement mail sending~~
+-   [ ] Refactor some code => 75%
+-   [ ] Improve CSS - Make it Responsible
+-   [ ] Add Config Dashboard

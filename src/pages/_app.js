@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
 
 import Head from "next/head";
 import App from "next/app";
@@ -27,29 +28,18 @@ config.inscricoes.isOpen = today >= dataInscricao;
 const theme = config.theme;
 
 function MyApp({ Component, pageProps }) {
+    const { register, handleSubmit, formState } = useForm();
+
+    const onSubmit = async (data) => {
+        await salvaEmailNews(data);
+    };
     const router = useRouter();
     const isHome = router.route == "/" ? true : false;
-
-    const [emailNews, setEmailNews] = useState("");
-
-    const handleChange = (e) => {
-        setEmailNews(e.target.value);
-    };
-
-    const handleSubmitNews = (e) => {
-        e.preventDefault();
-        const email = e.target.emailNews.value;
-
-        if (!validateEmail(email)) {
-            alert("email Invalido");
-        } else {
-            alert("Testar se estaá cadastrado, se nao estiver, cadastra");
-            // if (DB.newsletter.find((el) => el == email)) {
-            //     alert("email existe");
-            // }
-        }
-    };
-
+    {
+        //console.log(formState.errors);
+        formState?.errors?.emailNews &&
+            alert(formState.errors.emailNews.message);
+    }
     return (
         <>
             <Head>
@@ -81,19 +71,23 @@ function MyApp({ Component, pageProps }) {
                             <form
                                 name='formNews'
                                 id='formNews'
-                                onSubmit={handleSubmitNews}>
+                                onSubmit={handleSubmit(onSubmit)}>
                                 <input
-                                    type='text'
                                     name='emailNews'
-                                    value={emailNews}
+                                    ref={register({
+                                        required: "Preencha o email",
+                                        pattern: {
+                                            value: /^[a-z0-9.]+@[a-z0-9]+.[a-z]+.([a-z]+)?$/i,
+                                            message: "Email inválido",
+                                        },
+                                    })}
                                     className='campo placeholder'
-                                    onChange={handleChange}
                                     placeholder='Digite seu email'
                                 />
                                 <input
                                     type='submit'
-                                    defaultValue='OK'
                                     className='enviar'
+                                    value='OK'
                                 />
                             </form>
                         </Rodape.Bloco>
@@ -113,5 +107,20 @@ function MyApp({ Component, pageProps }) {
         </>
     );
 }
-
+async function salvaEmailNews(data) {
+    try {
+        const res = await fetch("http://localhost:3000/api/newsletter", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+        });
+        const { ok, msg } = await res.json();
+        console.log(ok);
+        if (ok) document.querySelector("#formNews").reset();
+        alert(msg);
+    } catch (error) {
+        alert("Erro ao enviar, tente novamente");
+        console.log(error);
+    }
+}
 export default MyApp;
