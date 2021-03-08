@@ -24,10 +24,10 @@ npm run dev
 -   [x] ~~Recreat actual interface~~
 -   [x] ~~Add actual database~~
 -   [x] ~~Recreate config logic~~
--   [ ] Recreate missing functionality
+-   [x] ~~Recreate missing functionality~~
 
-    -   [x] Implement Mural
-        -   [ ] Insert Comment Modal (logic)
+    -   [x] ~~Implement Mural~~
+        -   [x] ~~Insert Comment Modal (logic)~~
         -   [x] ~~Pagination~~
         -   [x] ~~Modal~~
     -   [x] ~~Implement newsEmail database saving~~

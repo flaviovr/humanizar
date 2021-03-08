@@ -1,13 +1,52 @@
 import styled from "styled-components";
 import Mural from "../components/Mural";
 import React, { useState } from "react";
-import ModalForm from "../components/Layout/modal-form";
 import FsLightbox from "fslightbox-react";
+import { useForm } from "react-hook-form";
+
 import db from "../assets/db";
 
 const Page = (props) => {
     const { itensMural } = props;
     const [openSendForm, setOpenSendForm] = useState(false);
+    const { register, handleSubmit, formState } = useForm();
+    const onSubmit = async (data) => {
+        await salvaRecado(data);
+    };
+    const Modal = (
+        <ModalForm>
+            <form id='formRecado' onSubmit={handleSubmit(onSubmit)}>
+                <label htmlFor='nome'>Nome, Cidade - Estado:</label>
+                <input
+                    name='name'
+                    ref={register({ required: "Campo obrigatório" })}
+                    className='campo rnd placeholder'
+                    placeholder='Digite seu nome...'
+                />
+                <label htmlFor='email'>E-mail:</label>
+                <input
+                    name='email'
+                    ref={register({
+                        pattern: {
+                            value: /^[a-z0-9.]+@[a-z0-9]+.[a-z]+.([a-z]+)?$/i,
+                            message: "Email inválido",
+                        },
+                    })}
+                    className='campo rnd placeholder'
+                    placeholder='Digite seu e-mail...'
+                />
+
+                <label htmlFor='recado'>Recado:</label>
+                <textarea
+                    name='message'
+                    ref={register({ required: "Campo obrigatório" })}
+                    className='campo rnd recado placeholder'
+                    placeholder='Digite sua mensagem...'></textarea>
+
+                <input type='submit' value='Enviar' className=' rnd enviar' />
+            </form>
+        </ModalForm>
+    );
     return (
         <Main>
             <h2>Mural de Recados</h2>
@@ -28,11 +67,7 @@ const Page = (props) => {
             </a>
             <hr />
             <Mural data={itensMural} perPage={9} paginate />
-            <FsLightbox
-                toggler={openSendForm}
-                sources={[ModalForm]}
-                slide={1}
-            />
+            <FsLightbox toggler={openSendForm} sources={[Modal]} slide={1} />
         </Main>
     );
 };
@@ -47,7 +82,63 @@ const Main = styled.div`
         width: 220px;
     }
 `;
+const ModalForm = styled.div`
+    width: 590px;
+    background-color: #fff;
+    opacity: 1;
+    padding: 15px;
+    height: auto;
+    form {
+        label {
+            display: block;
+            font-size: 18px;
+            color: #41352f;
+            width: 550px;
+            margin-bottom: 5px;
+        }
+        input,
+        textarea {
+            border: 1px solid #d3d0cb;
+            height: 35px;
+            width: 560px;
+            padding: 5px;
+            margin-bottom: 15px;
+            &.recado {
+                height: 200px;
+                margin-bottom: 15px;
+            }
+        }
+        input[type="submit"] {
+            width: 140px;
+            border: none;
+            margin: 0px;
+            display: block;
+            height: 32px;
+            background-color: #036;
+            font-size: 18px;
 
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+    }
+`;
+
+async function salvaRecado(data) {
+    try {
+        const res = await fetch("http://localhost:3000/api/recado", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+        });
+        const { ok, msg } = await res.json();
+        if (ok) document.querySelector("#formRecado").reset();
+        alert(msg);
+    } catch (error) {
+        alert("Erro ao enviar, tente novamente");
+    }
+}
 export async function getStaticProps(context) {
     let query = await db.query(
         "select id, nome, recado, data  from mural where ativo=1 order by id desc"
