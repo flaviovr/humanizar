@@ -1,16 +1,15 @@
-import { useState } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
 
 import Head from "next/head";
-import App from "next/app";
 
 import GlobalStyle from "../assets/global.style";
 import { ThemeProvider } from "styled-components";
 
 import Container from "../components/Layout/container.js";
 import TopBar from "../components/TopBar";
-import Rodape, { validateEmail } from "../components/Layout/rodape.js";
+import Rodape from "../components/Layout/rodape.js";
 import config from "../assets/config.json";
 
 // Calculate confignpm run
@@ -28,18 +27,18 @@ config.inscricoes.isOpen = today >= dataInscricao;
 const theme = config.theme;
 
 function MyApp({ Component, pageProps }) {
-    const { register, handleSubmit, formState } = useForm();
+    const {
+        register: register2,
+        formState: formState2,
+        handleSubmit: handleSubmit2,
+    } = useForm();
 
     const onSubmit = async (data) => {
         await salvaEmailNews(data);
     };
     const router = useRouter();
     const isHome = router.route == "/" ? true : false;
-    {
-        //console.log(formState.errors);
-        formState?.errors?.emailNews &&
-            alert(formState.errors.emailNews.message);
-    }
+
     return (
         <>
             <Head>
@@ -71,17 +70,19 @@ function MyApp({ Component, pageProps }) {
                             <form
                                 name='formNews'
                                 id='formNews'
-                                onSubmit={handleSubmit(onSubmit)}>
+                                onSubmit={handleSubmit2(onSubmit)}>
                                 <input
                                     name='emailNews'
-                                    ref={register({
+                                    ref={register2({
                                         required: "Preencha o email",
                                         pattern: {
                                             value: /^[a-z0-9.]+@[a-z0-9]+.[a-z]+.([a-z]+)?$/i,
                                             message: "Email inválido",
                                         },
                                     })}
-                                    className='campo placeholder'
+                                    className={
+                                        formState2.errors.emailNews && "erro"
+                                    }
                                     placeholder='Digite seu email'
                                 />
                                 <input
@@ -90,6 +91,11 @@ function MyApp({ Component, pageProps }) {
                                     value='OK'
                                 />
                             </form>
+                            <span className='error'>
+                                <ErrorMessage
+                                    errors={formState2.errors}
+                                    name='emailNews'></ErrorMessage>
+                            </span>
                         </Rodape.Bloco>
 
                         <Rodape.Bloco>

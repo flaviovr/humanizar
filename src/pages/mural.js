@@ -3,6 +3,7 @@ import Mural from "../components/Mural";
 import React, { useState } from "react";
 import FsLightbox from "fslightbox-react";
 import { useForm } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
 
 import db from "../assets/db";
 
@@ -13,20 +14,36 @@ const Page = (props) => {
     const onSubmit = async (data) => {
         await salvaRecado(data);
     };
+    //console.log(formState.errors);
     const Modal = (
         <ModalForm>
             <form id='formRecado' onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor='nome'>Nome, Cidade - Estado:</label>
+                <label htmlFor='name'>
+                    Nome, Cidade - Estado:{" "}
+                    <span>
+                        <ErrorMessage
+                            errors={formState.errors}
+                            name='name'></ErrorMessage>
+                    </span>
+                </label>
                 <input
                     name='name'
                     ref={register({ required: "Campo obrigatório" })}
-                    className='campo rnd placeholder'
+                    className={formState.errors.name ? "erro rnd" : "rnd"}
                     placeholder='Digite seu nome...'
                 />
-                <label htmlFor='email'>E-mail:</label>
+                <label htmlFor='email'>
+                    E-mail:{" "}
+                    <span>
+                        <ErrorMessage
+                            errors={formState.errors}
+                            name='email'></ErrorMessage>
+                    </span>
+                </label>
                 <input
                     name='email'
                     ref={register({
+                        required: "Campo obrigatório",
                         pattern: {
                             value: /^[a-z0-9.]+@[a-z0-9]+.[a-z]+.([a-z]+)?$/i,
                             message: "Email inválido",
@@ -36,7 +53,14 @@ const Page = (props) => {
                     placeholder='Digite seu e-mail...'
                 />
 
-                <label htmlFor='recado'>Recado:</label>
+                <label htmlFor='message'>
+                    Recado:{" "}
+                    <span>
+                        <ErrorMessage
+                            errors={formState.errors}
+                            name='message'></ErrorMessage>
+                    </span>
+                </label>
                 <textarea
                     name='message'
                     ref={register({ required: "Campo obrigatório" })}

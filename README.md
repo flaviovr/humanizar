@@ -1,6 +1,6 @@
 # Nextjs: ReactJs with styled-components
 
-Converting old Php/html/js based [`webpage`](http://humanizarsulfluminense.com.br) using Next.js/ReactJs with styled-components.
+Converting old Php/mysql/html/css/js based ['www.humanizarsulfluminense.com.br'](http://humanizarsulfluminense.com.br) using Next.js/ReactJs.
 
 ## How to use
 
@@ -19,24 +19,21 @@ npm run dev
 ## To-dos`s
 
 -   [x] ~~Create prototype Json data~~
-
 -   [x] ~~Move all actual database driven config to json~~
 -   [x] ~~Recreat actual interface~~
 -   [x] ~~Add actual database~~
 -   [x] ~~Recreate config logic~~
 -   [x] ~~Recreate missing functionality~~
-
     -   [x] ~~Implement Mural~~
         -   [x] ~~Insert Comment Modal (logic)~~
         -   [x] ~~Pagination~~
         -   [x] ~~Modal~~
     -   [x] ~~Implement newsEmail database saving~~
     -   [x] ~~Implement missing modals~~
-
     -   [x] ~~Implement Contact~~
         -   [x] ~~Save in database~~
         -   [x] ~~Implement mail sending~~
 
 -   [ ] Refactor some code => 75%
--   [ ] Improve CSS - Make it Responsible
--   [ ] Add Config Dashboard
+-   [ ] Improve CSS - Make it Responsible (v2)
+-   [ ] Add Config Dashboard (v3)

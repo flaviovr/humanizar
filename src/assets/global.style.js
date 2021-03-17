@@ -50,14 +50,24 @@ const GlobalStyle = createGlobalStyle`
        margin:0;padding:0;
       
     }
+     span.error {
+        color: ${({ theme }) => theme.colors.error};
+        font-size: 0.9em;
+    }
     img{vertical-align:bottom;}
     a img {border:none; }
     a, a:hover {text-decoration:none;color: ${theme.colors.primary};}
     a:hover { color: ${theme.colors.primaryDark};}
     hr { background: url(/images/page/hr.png) 0px -1px no-repeat; border: none; margin: 10px; height: 5px; display: block; clear: both; }
-    h2 { font-size: 28px; color: ${theme.colors.secondary} ; margin-bottom: 30px;/* height: 40px; */ line-height: 40px; padding: 0 10px;}
-    h3 { font-size: 21px; color: ${theme.colors.secondaryLight} ; margin-bottom: 20px;padding: 0 10px;}
-    h4 { font-size: 18px; color: ${theme.colors.primary}; margin-bottom: 15px; padding: 0 10px;}
+    h2 { font-size: 28px; color: ${
+        theme.colors.secondary
+    } ; margin-bottom: 30px;/* height: 40px; */ line-height: 40px; padding: 0 10px;}
+    h3 { font-size: 21px; color: ${
+        theme.colors.secondaryLight
+    } ; margin-bottom: 20px;padding: 0 10px;}
+    h4 { font-size: 18px; color: ${
+        theme.colors.primary
+    }; margin-bottom: 15px; padding: 0 10px;}
     h5 { font-size: 16px; margin-bottom: 3px;}
     .btn {
         display: block;

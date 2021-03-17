@@ -8,6 +8,7 @@
         "start": "next start"
     },
     "dependencies": {
+        "@hookform/error-message": "0.0.5",
         "emailjs": "^3.4.0",
         "emailjs-com": "^2.6.4",
         "fslightbox-react": "^1.6.2",

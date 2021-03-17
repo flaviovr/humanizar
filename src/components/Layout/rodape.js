@@ -8,18 +8,22 @@ const Rodape = styled.div`
     padding-top: 20px;
     height: 170px;
 
-    .campo {
+    form input {
         width: 177px;
         height: 24px;
         padding: 0 5px;
         line-height: 20px;
         border: 1px solid #c5c1ba;
+        outline: none;
         margin-top: 9px;
         -webkit-border-radius: 4px;
         -moz-border-radius: 4px;
         -o-border-radius: 4px;
         border-radius: 4px;
         margin-right: 3px;
+        &.erro {
+            border-color: ${({ theme }) => theme.colors.error}!important;
+        }
     }
     .enviar {
         border: none;

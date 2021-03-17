@@ -1,48 +1,80 @@
 import styled from "styled-components";
 import emailjs from "emailjs-com";
 import { useForm } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
 
 const Page = (props) => {
-    const { register, handleSubmit, formState } = useForm();
+    const { register, handleSubmit, formState, errors } = useForm();
 
     const onSubmit = async (data) => {
         await salvaContato(data);
         enviaEmail(data);
     };
 
+    // if (
+    //     formState.errors.name ||
+    //     formState.errors.email ||
+    //     formState.errors.message
+    // ) {
+    //     alert("Preencha todos campos corretamente!");
+    // }
+
     return (
         <Main>
             <h2>Fale Conosco</h2>
+
             <form
                 name='formContato'
                 id='formContato'
                 onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor='nome'>Nome:</label>
+                <label htmlFor='name'>
+                    Nome:{" "}
+                    <span>
+                        <ErrorMessage
+                            errors={formState.errors}
+                            name='message'></ErrorMessage>
+                    </span>
+                </label>
                 <input
                     name='name'
                     ref={register({ required: "Campo obrigatório" })}
-                    className='campo rnd placeholder'
+                    className={formState.errors.name ? "erro rnd" : "rnd"}
                     placeholder='Digite seu nome...'
                 />
 
-                <label htmlFor='email'>E-mail:</label>
+                <label htmlFor='email'>
+                    E-mail:{" "}
+                    <span>
+                        <ErrorMessage
+                            errors={formState.errors}
+                            name='email'></ErrorMessage>
+                    </span>
+                </label>
                 <input
                     name='email'
                     ref={register({
+                        required: "Campo Obrigatório",
                         pattern: {
                             value: /^[a-z0-9.]+@[a-z0-9]+.[a-z]+.([a-z]+)?$/i,
                             message: "Email inválido",
                         },
                     })}
-                    className='campo rnd placeholder'
+                    className={formState.errors.email ? "erro rnd" : "rnd"}
                     placeholder='Digite seu e-mail...'
                 />
 
-                <label htmlFor='recado'>Mensagem:</label>
+                <label htmlFor='recado'>
+                    Mensagem:{" "}
+                    <span>
+                        <ErrorMessage
+                            errors={formState.errors}
+                            name='name'></ErrorMessage>
+                    </span>
+                </label>
                 <textarea
                     name='message'
                     ref={register({ required: "Campo obrigatório" })}
-                    className='campo rnd recado placeholder'
+                    className={formState.errors.message ? "erro rnd" : "rnd"}
                     placeholder='Digite sua mensagem...'></textarea>
 
                 <input
@@ -118,21 +150,39 @@ const Main = styled.div`
             color: #41352f;
             width: 550px;
             margin-bottom: 5px;
+            span {
+                color: ${({ theme }) => theme.colors.error};
+                font-size: 0.7em;
+            }
         }
-        .campo {
+        input {
             border: 1px solid #d3d0cb;
             height: 35px;
             width: 560px;
             padding: 5px;
             margin-bottom: 15px;
+            outline: none;
+            &.erro {
+                border-color: ${({ theme }) => theme.colors.error};
+            }
         }
-        .recado {
+        textarea {
+            border: 1px solid #d3d0cb;
+            height: 35px;
+            width: 560px;
+            padding: 5px;
+            margin-bottom: 15px;
             height: 200px;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
+            outline: none;
+            &.erro {
+                border-color: ${({ theme }) => theme.colors.error};
+            }
         }
-        .btn {
+        input[type="submit"] {
             width: 140px;
             border: none;
+            line-height: 1;
         }
     }
     #box {

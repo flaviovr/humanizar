@@ -65,6 +65,10 @@ Rodape.Bloco = styled.div`
         font-weight: 300;
         font-family: "Roboto";
     }
+    span.error {
+        color: ${({ theme }) => theme.colors.error};
+        font-size: 0.7em;
+    }
 `;
 
 Rodape.Copyright = styled.p`
